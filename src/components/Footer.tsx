@@ -8,7 +8,7 @@ const Footer: React.FC = () => {
   const { t, currentLanguage } = useLanguage();
 
   return (
-    <footer className="relative bg-gradient-to-br from-gray-900 via-gray-900 to-black text-white py-16 overflow-hidden">
+    <footer className="relative bg-gradient-to-br from-gray-900 via-gray-900 to-black text-white py-16 overflow-hidden dark:from-black dark:via-gray-950 dark:to-gray-900">
       {/* decorative background glow */}
       <div className="pointer-events-none absolute -top-24 -right-24 h-80 w-80 rounded-full bg-amber-500/10 blur-3xl" />
       <div className="pointer-events-none absolute -bottom-24 -left-24 h-80 w-80 rounded-full bg-orange-500/10 blur-3xl" />

@@ -18,36 +18,45 @@ const translations = {
     about: 'Біз туралы',
     contact: 'Байланыс',
     order: 'Тапсырыс беру',
-    
+
     // Hero section
     heroTitle: 'BatuFoodLove',
     heroSubtitle: 'Дәмді тағамдар мен жақсы сезімдер',
-    heroDescription: 'Біз сізге ең дәмді тағамдар мен жылы атмосфераны ұсынамыз. Әрбір тағам сүйіспеншілікпен дайындалады.',
-    
+    heroDescription:
+      'Біз сізге ең дәмді тағамдар мен жылы атмосфераны ұсынамыз. Әрбір тағам сүйіспеншілікпен дайындалады.',
+
     // Menu
     menuTitle: 'Біздің мәзір',
-    shashlik: 'Шашлықтар',
-    doner: 'Донерлер',
-    pizza: 'Пиццалар',
-    beverages: 'Сусындар',
+
+    // Categories
+    zavtrak: 'Таңғы ас',
     firstCourse: 'Бірінші тағамдар',
     secondCourse: 'Екінші тағамдар',
-    
+    shashlik: 'Шашлықтар',
+    pizza: 'Пиццалар',
+    burger: 'Бургерлер',
+    chicken: 'Чикендер',
+    doner: 'Донерлер',
+    beverages: 'Сусындар',
+    lemonade: 'Лимонадтар',
+    tea: 'Шайлар',
+    coffee: 'Кофелер',
+
     // Contact
     contactTitle: 'Бізбен байланысыңыз',
     address: 'Мекенжайы',
     phone: 'Телефон',
     email: 'Электрондық пошта',
     workingHours: 'Жұмыс уақыты',
-    
+
     // Online ordering
     orderOnline: 'Онлайн тапсырыс',
     orderYandex: 'Yandex арқылы тапсырыс',
     orderBold: 'Bold арқылы тапсырыс',
-    
+
     // Social media
     followUs: 'Бізді қадағалаңыз',
-    
+
     // Menu items
     lambShashlik: 'Қой еті шашлығы',
     beefShashlik: 'Сиыр еті шашлығы',
@@ -55,16 +64,15 @@ const translations = {
     beefDoner: 'Сиыр еті донері',
     margherita: 'Маргарита пицца',
     pepperoni: 'Пепперони пицца',
-    tea: 'Шай',
-    coffee: 'Кофе',
     borsch: 'Борщ',
     soup: 'Сорпа',
     plov: 'Палау',
     manty: 'Манты',
-    
+
     // Footer
     allRightsReserved: 'Барлық құқықтар қорғалған',
   },
+
   ru: {
     // Header
     home: 'Главная',
@@ -72,36 +80,45 @@ const translations = {
     about: 'О нас',
     contact: 'Контакты',
     order: 'Заказать',
-    
+
     // Hero section
     heroTitle: 'BatuFoodLove',
     heroSubtitle: 'Вкусная еда и хорошие эмоции',
-    heroDescription: 'Мы предлагаем вам самые вкусные блюда и теплую атмосферу. Каждое блюдо готовится с любовью.',
-    
+    heroDescription:
+      'Мы предлагаем вам самые вкусные блюда и теплую атмосферу. Каждое блюдо готовится с любовью.',
+
     // Menu
     menuTitle: 'Наше меню',
-    shashlik: 'Шашлыки',
-    doner: 'Донеры',
-    pizza: 'Пиццы',
-    beverages: 'Напитки',
+
+    // Categories
+    zavtrak: 'Завтраки',
     firstCourse: 'Первые блюда',
     secondCourse: 'Вторые блюда',
-    
+    shashlik: 'Шашлыки',
+    pizza: 'Пиццы',
+    burger: 'Бургеры',
+    chicken: 'Чикены',
+    doner: 'Донеры',
+    beverages: 'Напитки',
+    lemonade: 'Лимонады',
+    tea: 'Чаи',
+    coffee: 'Кофе',
+
     // Contact
     contactTitle: 'Свяжитесь с нами',
     address: 'Адрес',
     phone: 'Телефон',
     email: 'Электронная почта',
     workingHours: 'Время работы',
-    
+
     // Online ordering
     orderOnline: 'Онлайн заказ',
     orderYandex: 'Заказать через Yandex',
     orderBold: 'Заказать через Bold',
-    
+
     // Social media
     followUs: 'Подписывайтесь на нас',
-    
+
     // Menu items
     lambShashlik: 'Шашлык из баранины',
     beefShashlik: 'Шашлык из говядины',
@@ -109,16 +126,15 @@ const translations = {
     beefDoner: 'Донер из говядины',
     margherita: 'Пицца Маргарита',
     pepperoni: 'Пицца Пепперони',
-    tea: 'Чай',
-    coffee: 'Кофе',
     borsch: 'Борщ',
     soup: 'Суп',
     plov: 'Плов',
     manty: 'Манты',
-    
+
     // Footer
     allRightsReserved: 'Все права защищены',
   },
+
   en: {
     // Header
     home: 'Home',
@@ -126,36 +142,45 @@ const translations = {
     about: 'About',
     contact: 'Contact',
     order: 'Order',
-    
+
     // Hero section
     heroTitle: 'BatuFoodLove',
     heroSubtitle: 'Delicious food and good emotions',
-    heroDescription: 'We offer you the most delicious dishes and warm atmosphere. Every meal is prepared with love.',
-    
+    heroDescription:
+      'We offer you the most delicious dishes and warm atmosphere. Every meal is prepared with love.',
+
     // Menu
     menuTitle: 'Our Menu',
-    shashlik: 'Shashlik',
-    doner: 'Doner',
-    pizza: 'Pizza',
-    beverages: 'Beverages',
+
+    // Categories
+    zavtrak: 'Breakfast',
     firstCourse: 'First Course',
     secondCourse: 'Second Course',
-    
+    shashlik: 'Shashlik',
+    pizza: 'Pizza',
+    burger: 'Burgers',
+    chicken: 'Chickens',
+    doner: 'Doners',
+    beverages: 'Beverages',
+    lemonade: 'Lemonades',
+    tea: 'Tea',
+    coffee: 'Coffee',
+
     // Contact
     contactTitle: 'Contact Us',
     address: 'Address',
     phone: 'Phone',
     email: 'Email',
     workingHours: 'Working Hours',
-    
+
     // Online ordering
     orderOnline: 'Order Online',
     orderYandex: 'Order via Yandex',
     orderBold: 'Order via Bold',
-    
+
     // Social media
     followUs: 'Follow Us',
-    
+
     // Menu items
     lambShashlik: 'Lamb Shashlik',
     beefShashlik: 'Beef Shashlik',
@@ -163,16 +188,14 @@ const translations = {
     beefDoner: 'Beef Doner',
     margherita: 'Margherita Pizza',
     pepperoni: 'Pepperoni Pizza',
-    tea: 'Tea',
-    coffee: 'Coffee',
     borsch: 'Borscht',
     soup: 'Soup',
     plov: 'Plov',
     manty: 'Manti',
-    
+
     // Footer
     allRightsReserved: 'All rights reserved',
-  }
+  },
 };
 
 export const LanguageProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
@@ -183,7 +206,7 @@ export const LanguageProvider: React.FC<{ children: ReactNode }> = ({ children }
   };
 
   const t = (key: string): string => {
-    return translations[currentLanguage][key as keyof typeof translations[Language]] || key;
+    return translations[currentLanguage][key as keyof typeof translations['ru']] || key;
   };
 
   return (

@@ -83,7 +83,7 @@ const Contact: React.FC = () => {
   return (
     <section
       id="contact"
-      className="py-20 bg-gradient-to-br from-amber-50 to-orange-50"
+      className="py-20 bg-gradient-to-br from-amber-50 to-orange-50 dark:from-gray-900 dark:to-black transition-colors"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
@@ -94,10 +94,10 @@ const Contact: React.FC = () => {
               {t("contactTitle")}
             </span>
           </div>
-          <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
+          <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 dark:text-gray-100 mb-6">
             {t("contactTitle")}
           </h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
             {currentLanguage === "kz"
               ? "Бізбен байланысыңыз немесе социалды желілерде қадағалаңыз"
               : currentLanguage === "ru"
@@ -109,7 +109,7 @@ const Contact: React.FC = () => {
         <div className="grid lg:grid-cols-2 gap-12">
           {/* Contact Information */}
           <div className="space-y-8">
-            <h3 className="text-2xl font-bold text-gray-900 mb-6">
+            <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-6">
               {currentLanguage === "kz"
                 ? "Байланыс ақпараты"
                 : currentLanguage === "ru"
@@ -121,16 +121,16 @@ const Contact: React.FC = () => {
               {contactInfo.map((info, index) => (
                 <div
                   key={index}
-                  className="flex items-start space-x-4 p-4 bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300"
+                  className="flex items-start space-x-4 p-4 bg-white dark:bg-gray-800 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300"
                 >
                   <div className="flex-shrink-0 p-2 bg-amber-50 rounded-lg">
                     {info.icon}
                   </div>
                   <div>
-                    <h4 className="font-semibold text-gray-900 mb-1">
+                    <h4 className="font-semibold text-gray-900 dark:text-gray-100 mb-1">
                       {info.title}
                     </h4>
-                    <p className="text-gray-600">{info.content}</p>
+                    <p className="text-gray-600 dark:text-gray-300">{info.content}</p>
                   </div>
                 </div>
               ))}
@@ -141,7 +141,7 @@ const Contact: React.FC = () => {
           <div className="space-y-8">
             {/* Social Media */}
             <div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-6">
+              <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-6">
                 {t("followUs")}
               </h3>
               <div className="space-y-4">
@@ -151,7 +151,7 @@ const Contact: React.FC = () => {
                     href={social.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center space-x-4 p-4 bg-white rounded-xl shadow-md hover:shadow-lg transition-all duration-300 group hover:-translate-y-1"
+                    className="flex items-center space-x-4 p-4 bg-white dark:bg-gray-800 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 group hover:-translate-y-1"
                   >
                     <div
                       className={`flex-shrink-0 p-3 rounded-lg bg-gradient-to-r ${social.color} text-white group-hover:scale-110 transition-transform duration-300`}
@@ -159,13 +159,13 @@ const Contact: React.FC = () => {
                       {social.icon}
                     </div>
                     <div>
-                      <h4 className="font-semibold text-gray-900">
+                      <h4 className="font-semibold text-gray-900 dark:text-gray-100">
                         {social.name}
                       </h4>
-                      <p className="text-gray-600 text-sm">{social.handle}</p>
+                      <p className="text-gray-600 dark:text-gray-300 text-sm">{social.handle}</p>
                     </div>
                     <div className="ml-auto">
-                      <div className="w-6 h-6 bg-gray-200 rounded-full flex items-center justify-center group-hover:bg-amber-500 group-hover:text-white transition-colors duration-300">
+                      <div className="w-6 h-6 bg-gray-200 dark:bg-gray-700 rounded-full flex items-center justify-center group-hover:bg-amber-500 group-hover:text-white transition-colors duration-300">
                         <span className="text-xs">→</span>
                       </div>
                     </div>
@@ -175,7 +175,7 @@ const Contact: React.FC = () => {
             </div>
 
             {/* Map Embed */}
-            <div className="bg-white rounded-xl shadow-lg overflow-hidden">
+            <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden">
               <div className="relative w-full" style={{ paddingTop: '56.25%' }}>
                 <iframe
                   title="Yandex Map"
@@ -185,8 +185,8 @@ const Contact: React.FC = () => {
                   referrerPolicy="no-referrer-when-downgrade"
                 />
               </div>
-              <div className="p-4 border-t border-gray-100">
-                <p className="text-gray-600">
+              <div className="p-4 border-t border-gray-100 dark:border-gray-700">
+                <p className="text-gray-600 dark:text-gray-300">
                   {currentLanguage === "kz"
                     ? "Біздің орналасуымыз"
                     : currentLanguage === "ru"

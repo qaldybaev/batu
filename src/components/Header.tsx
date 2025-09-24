@@ -1,11 +1,28 @@
 import React, { useState } from 'react';
-import { Menu, X, Globe } from 'lucide-react';
+import { Globe, Moon, Sun } from 'lucide-react';
 import { useLanguage, Language } from '../contexts/LanguageContext';
 
 const Header: React.FC = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  // Mobile drawer removed; only theme toggle remains
   const [isLanguageOpen, setIsLanguageOpen] = useState(false);
   const { currentLanguage, setLanguage, t } = useLanguage();
+  const [isDark, setIsDark] = useState(() => {
+    if (typeof window === 'undefined') return false;
+    const stored = localStorage.getItem('theme');
+    if (stored) return stored === 'dark';
+    return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+  });
+
+  React.useEffect(() => {
+    const root = document.documentElement;
+    if (isDark) {
+      root.classList.add('dark');
+      localStorage.setItem('theme', 'dark');
+    } else {
+      root.classList.remove('dark');
+      localStorage.setItem('theme', 'light');
+    }
+  }, [isDark]);
 
   const languages = [
     { code: 'kz' as Language, name: 'ҚАЗ', flag: '🇰🇿' },
@@ -16,12 +33,12 @@ const Header: React.FC = () => {
   const navItems = [
     { key: 'home', href: '#home' },
     { key: 'menu', href: '#menu' },
-    { key: 'about', href: '#about' },
+    // { key: 'about', href: '#about' },
     { key: 'contact', href: '#contact' }
   ];
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md shadow-lg">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-white/95 dark:bg-gray-900/80 backdrop-blur-md shadow-lg border-b border-transparent dark:border-gray-800 transition-colors">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
@@ -37,7 +54,7 @@ const Header: React.FC = () => {
               <a
                 key={item.key}
                 href={item.href}
-                className="text-gray-700 hover:text-amber-600 px-3 py-2 text-sm font-medium transition-colors duration-200 hover:scale-105"
+                className="text-gray-700 dark:text-gray-200 hover:text-amber-600 dark:hover:text-amber-400 px-3 py-2 text-sm font-medium transition-colors duration-200 hover:scale-105"
               >
                 {t(item.key)}
               </a>
@@ -77,41 +94,19 @@ const Header: React.FC = () => {
               )}
             </div>
 
-            {/* Order Button */}
-            <button className="hidden md:block bg-gradient-to-r from-amber-500 to-orange-500 text-white px-6 py-2 rounded-full text-sm font-medium hover:scale-105 transition-transform duration-200 shadow-lg">
-              {t('order')}
-            </button>
-
-            {/* Mobile menu button */}
+            {/* Dark/Light Toggle */}
             <button
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="md:hidden p-2 rounded-md text-gray-700 hover:text-amber-600 hover:bg-gray-100 transition-colors duration-200"
+              aria-label="Toggle theme"
+              onClick={() => setIsDark(!isDark)}
+              className="flex items-center gap-2 px-3 py-2 text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-amber-600 dark:hover:text-amber-400 transition-colors duration-200"
             >
-              {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+              {isDark ? <Sun size={16} /> : <Moon size={16} />}
+              <span className="hidden sm:inline">{isDark ? 'Light' : 'Dark'}</span>
             </button>
           </div>
         </div>
 
-        {/* Mobile Navigation */}
-        {isMenuOpen && (
-          <div className="md:hidden py-4 border-t border-gray-200">
-            <div className="flex flex-col space-y-4">
-              {navItems.map((item) => (
-                <a
-                  key={item.key}
-                  href={item.href}
-                  className="text-gray-700 hover:text-amber-600 px-3 py-2 text-base font-medium transition-colors duration-200"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  {t(item.key)}
-                </a>
-              ))}
-              <button className="bg-gradient-to-r from-amber-500 to-orange-500 text-white px-6 py-2 rounded-full text-base font-medium mx-3 hover:scale-105 transition-transform duration-200 shadow-lg">
-                {t('order')}
-              </button>
-            </div>
-          </div>
-        )}
+        {/* Mobile navigation removed */}
       </div>
     </header>
   );
