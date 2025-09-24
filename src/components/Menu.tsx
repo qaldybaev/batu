@@ -1,13 +1,15 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import { Utensils } from "lucide-react";
 import { useLanguage } from "../contexts/LanguageContext";
+import { Worker, Viewer } from "@react-pdf-viewer/core";
+import "@react-pdf-viewer/core/lib/styles/index.css";
 
 const Menu: React.FC = () => {
-  const {  currentLanguage } = useLanguage();
+  const { currentLanguage } = useLanguage();
+  const [selectedPdf, setSelectedPdf] = useState<string | null>(null);
 
-  // PDF fayllar (public papkaga qo‘yiladi)
   const pdfs = [
     {
       key: "limonadlar",
@@ -30,10 +32,7 @@ const Menu: React.FC = () => {
   ];
 
   return (
-    <section
-      id="menu"
-      className="py-20 bg-white dark:bg-gray-900 transition-colors"
-    >
+    <section id="menu" className="py-20 bg-white dark:bg-gray-900 transition-colors">
       <div className="max-w-3xl mx-auto px-4 text-center">
         {/* Header */}
         <div className="flex items-center justify-center space-x-2 text-amber-600 mb-4">
@@ -55,19 +54,26 @@ const Menu: React.FC = () => {
         </h2>
 
         {/* PDF tugmalar */}
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+        <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
           {pdfs.map((pdf) => (
-            <a
+            <button
               key={pdf.key}
-              href={pdf.url}
-              target="_blank"
-              rel="noopener noreferrer"
+              onClick={() => setSelectedPdf(pdf.url)}
               className="inline-block bg-gradient-to-r from-amber-500 to-orange-500 text-white px-8 py-4 rounded-full text-lg font-semibold hover:scale-105 transition-transform duration-200 shadow-lg"
             >
               📄 {pdf.names[currentLanguage]}
-            </a>
+            </button>
           ))}
         </div>
+
+        {/* PDF Viewer */}
+        {selectedPdf && (
+          <div style={{ height: "600px", border: "1px solid #ccc" }}>
+            <Worker workerUrl="https://unpkg.com/pdfjs-dist@3.9.179/build/pdf.worker.min.js">
+              <Viewer fileUrl={selectedPdf} />
+            </Worker>
+          </div>
+        )}
       </div>
     </section>
   );
