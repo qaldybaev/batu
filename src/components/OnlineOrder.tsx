@@ -15,7 +15,7 @@ const OnlineOrder: React.FC = () => {
           ? "Быстрая доставка через Yandex Еда"
           : "Fast delivery via Yandex Food",
       color: "from-yellow-400 to-yellow-500",
-      logo: "/public/yandex.png", // ✅ Yandex rasmi shu papkada bo‘lishi kerak (public/images/)
+      logo: "/yandex.png", // ✅ Yandex rasmi shu papkada bo‘lishi kerak (public/images/)
       deliveryTime: "30-40 мин",
       link: "https://eda.yandex.kz/ru-kz/astana/r/baty_doner?placeSlug=_baty_doner",
     },
@@ -28,7 +28,7 @@ const OnlineOrder: React.FC = () => {
           ? "Заказ через приложение Bold"
           : "Order through Bold app",
       color: "from-green-500 to-green-600",
-      logo: "/public/images.jpeg", // ✅ Bold rasmi shu papkada bo‘lishi kerak
+      logo: "/images.jpeg", // ✅ Bold rasmi shu papkada bo‘lishi kerak
       deliveryTime: "25-35 мин",
       link: "https://wolt.com/ru/kaz/nur-sultan/restaurant/batu-astana?no_universal_links=true",
     },

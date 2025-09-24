@@ -11,7 +11,7 @@ const Menu: React.FC = () => {
   const pdfs = [
     {
       key: "limonadlar",
-      url: "public/limonade.pdf",
+      url: "/limonade.pdf",
       names: {
         kz: "Лимонадтар мәзірі (PDF)",
         ru: "Меню лимонадов (PDF)",
@@ -20,7 +20,7 @@ const Menu: React.FC = () => {
     },
     {
       key: "taomlar",
-      url: "public/foods.pdf",
+      url: "/foods.pdf",
       names: {
         kz: "Тағамдар мәзірі (PDF)",
         ru: "Меню блюд (PDF)",
