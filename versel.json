@@ -1,5 +1,6 @@
 {
   "rewrites": [
-    { "source": "/category/:path*", "destination": "/" }
+    { "source": "/category/:path*", "destination": "/" },
+    { "source": "/:path*", "destination": "/" }
   ]
 }

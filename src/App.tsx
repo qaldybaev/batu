@@ -1,15 +1,14 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { HashRouter as Router, Routes, Route } from "react-router-dom";
 import { LanguageProvider } from "./contexts/LanguageContext";
+import { ThemeProvider } from "./contexts/ThemeContext";
+
 import Header from "./components/Header";
 import Hero from "./components/Hero";
 import Menu from "./components/Menu";
-
 import OnlineOrder from "./components/OnlineOrder";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
-
-import { ThemeProvider } from "./contexts/ThemeContext";
 import CategoryPage from "./components/CategoryPage";
 
 function App() {

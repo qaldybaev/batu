@@ -1,8 +1,8 @@
 import React from "react";
 import { MapPin, Phone, Mail, Clock, Instagram } from "lucide-react";
-import { useLanguage } from "../contexts/LanguageContext";
 import { AiFillTikTok } from "react-icons/ai";
 import { FaWhatsapp } from "react-icons/fa";
+import { useLanguage } from "../contexts/LanguageContext";
 
 const Contact: React.FC = () => {
   const { t, currentLanguage } = useLanguage();
@@ -146,9 +146,9 @@ const Contact: React.FC = () => {
                     <h4 className="font-semibold text-gray-900 dark:text-gray-100 mb-1">
                       {info.title}
                     </h4>
-                    <p className="text-gray-600 dark:text-gray-300">
+                    <div className="text-gray-600 dark:text-gray-300">
                       {info.content}
-                    </p>
+                    </div>
                   </div>
                 </div>
               ))}
@@ -206,14 +206,14 @@ const Contact: React.FC = () => {
                 />
               </div>
               <div className="p-4 border-t border-gray-100 dark:border-gray-700">
-                <p className="text-gray-600 dark:text-gray-300">
+                <div className="text-gray-600 dark:text-gray-300">
                   {currentLanguage === "kz"
                     ? "Біздің орналасуымыз"
                     : currentLanguage === "ru"
                     ? "Наше местоположение"
                     : "Our Location"}
-                </p>
-                <p className="text-sm text-amber-700 mt-1">
+                </div>
+                <div className="text-sm text-amber-700 mt-1">
                   <a
                     href={yandexMapsUrl}
                     target="_blank"
@@ -226,7 +226,7 @@ const Contact: React.FC = () => {
                       ? addressTextRu
                       : addressTextEn}
                   </a>
-                </p>
+                </div>
               </div>
             </div>
           </div>
