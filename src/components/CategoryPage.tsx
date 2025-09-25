@@ -66,9 +66,28 @@ const CategoryPage: React.FC = () => {
   const { isDark } = useTheme();
   const navigate = useNavigate();
   const [showScroll, setShowScroll] = useState(false);
+  const [images, setImages] = useState(menuImages);
+
+  // ✅ LocalStorage va memory caching
+  useEffect(() => {
+    const cached = localStorage.getItem("menuImages");
+    if (cached) {
+      setImages(JSON.parse(cached));
+    } else {
+      localStorage.setItem("menuImages", JSON.stringify(menuImages));
+    }
+
+    // ✅ Preload rasmlar memory-ga
+    menuImages.forEach((img) => {
+      const image = new Image();
+      image.src = img.src;
+    });
+  }, []);
 
   const filteredImages =
-    id === "all" ? menuImages : menuImages.filter((img) => img.category === id);
+    id === "all"
+      ? images
+      : images.filter((img) => img.category === id);
 
   useEffect(() => {
     const handleScroll = () => setShowScroll(window.scrollY > 300);
@@ -76,7 +95,8 @@ const CategoryPage: React.FC = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
+  const scrollToTop = () =>
+    window.scrollTo({ top: 0, behavior: "smooth" });
 
   return (
     <div
@@ -87,7 +107,7 @@ const CategoryPage: React.FC = () => {
       {/* Home button */}
       <button
         onClick={() => navigate("/")}
-        className="fixed top-4 right-4 z-50  bg-gray-900 text-white p-2 rounded-full shadow hover:bg-orange-600 transition w-10 h-10 flex items-center justify-center"
+        className="fixed top-4 right-4 z-50 bg-gray-900 text-white p-2 rounded-full shadow hover:bg-orange-600 transition w-10 h-10 flex items-center justify-center"
         title="Home"
       >
         <GiExitDoor size={20} />
@@ -101,7 +121,6 @@ const CategoryPage: React.FC = () => {
                 src={img.src}
                 alt={img.category}
                 className="w-full h-auto hover:scale-105 transition-transform"
-                loading="lazy"
               />
             </div>
           ))}
