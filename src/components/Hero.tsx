@@ -1,72 +1,79 @@
-import React from 'react';
-import { ChefHat, Heart, Star } from 'lucide-react';
-import { useLanguage } from '../contexts/LanguageContext';
+import React, { useState, useEffect } from "react";
+import { Heart } from "lucide-react";
+import { useLanguage } from "../contexts/LanguageContext";
 
 const Hero: React.FC = () => {
-  const { t } = useLanguage();
+  const { t, currentLanguage } = useLanguage();
+
+  const images = [
+    "/foto1.png",
+    "/foto2.png",
+    "/foto3.png",
+    "/foto4.png",
+    "/foto5.png",
+    "/foto6.png",
+    "/foto7.png",
+    "/foto8.png",
+    "/foto9.png",
+  ];
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % images.length);
+    }, 4000);
+    return () => clearInterval(interval);
+  }, []);
+
+  // Kafe tavsifi (tilga qarab)
+  const descriptions: { [key: string]: string } = {
+    kz: "Batu – бұл тек қана дәмді тағамдар емес, сонымен бірге жақсы эмоциялар мен есте қаларлық сәттердің ошағы. Біз әрбір тағамды сүйіспеншілікпен дайындап, әр келушіні ерекше атмосферамен қарсы аламыз. Бізбен бірге дәмді тағамның, жылулық пен көңілді сәттердің куәсі болыңыз!",
+    ru: "Batu – это не просто вкусная еда, а место, где рождаются хорошие эмоции и незабываемые моменты. Мы готовим каждое блюдо с любовью и встречаем каждого гостя в особой атмосфере. Станьте свидетелем настоящего вкуса, тепла и радости вместе с нами!",
+    en: "Batu is not just a place for delicious food, but a haven where good emotions and unforgettable moments come alive. Every dish is prepared with love, and every guest is welcomed into a unique and warm atmosphere. Join us and experience the true taste of joy, warmth, and culinary delight!",
+  };
 
   return (
-    <section id="home" className="pt-16 min-h-screen bg-gradient-to-br from-amber-50 via-orange-50 to-red-50 dark:from-gray-900 dark:via-gray-900 dark:to-black flex items-center transition-colors">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          {/* Content */}
-          <div className="space-y-8">
+    <section
+      id="home"
+      className="pt-16 min-h-screen bg-gradient-to-br from-amber-50 via-orange-50 to-red-50 dark:from-gray-900 dark:via-gray-900 dark:to-black flex flex-col items-center transition-colors"
+    >
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 w-full">
+        <div className="grid lg:grid-cols-2 gap-12 items-center w-full">
+          <div className="space-y-8 flex flex-col justify-center">
             <div className="flex items-center space-x-2 text-amber-600">
               <Heart className="w-6 h-6 fill-current" />
-              <span className="text-sm font-semibold uppercase tracking-wider">{t('heroSubtitle')}</span>
+              <span className="text-sm font-semibold uppercase tracking-wider">
+                {t("heroSubtitle")}
+              </span>
             </div>
-            
+
             <h1 className="text-5xl lg:text-7xl font-bold text-gray-900 dark:text-gray-100 leading-tight">
               <span className="bg-gradient-to-r from-amber-600 to-orange-600 bg-clip-text text-transparent">
-                {t('heroTitle')}
+                {t("heroTitle")}
               </span>
             </h1>
-            
-            <p className="text-xl text-gray-600 dark:text-gray-300 leading-relaxed max-w-lg">
-              {t('heroDescription')}
-            </p>
-            
-            <div className="flex flex-col sm:flex-row gap-4">
-              <button className="bg-gradient-to-r from-amber-500 to-orange-500 text-white px-8 py-4 rounded-full text-lg font-semibold hover:scale-105 transition-transform duration-300 shadow-xl">
-                {t('menu')}
-              </button>
-              <button className="border-2 border-amber-500 text-amber-600 px-8 py-4 rounded-full text-lg font-semibold hover:bg-amber-500 hover:text-white transition-all duration-300">
-                {t('orderOnline')}
-              </button>
-            </div>
-            
-            {/* Stats */}
-            <div className="flex space-x-8 pt-8">
-              <div className="text-center">
-                <div className="text-3xl font-bold text-gray-900 dark:text-gray-100">1000+</div>
-                <div className="text-sm text-gray-600 dark:text-gray-400">Happy Customers</div>
-              </div>
-              <div className="text-center">
-                <div className="text-3xl font-bold text-gray-900 dark:text-gray-100 flex items-center justify-center">
-                  5.0
-                  <Star className="w-6 h-6 ml-1 text-amber-500 fill-current" />
-                </div>
-                <div className="text-sm text-gray-600 dark:text-gray-400">Rating</div>
-              </div>
-            </div>
           </div>
-          
-          {/* Image */}
-          <div className="relative">
-            <div className="relative z-10 bg-gradient-to-br from-amber-100 to-orange-100 dark:from-gray-800 dark:to-gray-800 rounded-3xl p-8 shadow-2xl">
-              <div className="aspect-square bg-white dark:bg-gray-900 rounded-2xl flex items-center justify-center">
-                <ChefHat className="w-32 h-32 text-amber-600" />
-              </div>
-            </div>
-            
-            {/* Floating elements */}
-            <div className="absolute top-10 -right-6 bg-white dark:bg-gray-800 p-4 rounded-2xl shadow-lg animate-bounce">
-              <Heart className="w-8 h-8 text-red-500 fill-current" />
-            </div>
-            <div className="absolute -bottom-6 -left-6 bg-white dark:bg-gray-800 p-4 rounded-2xl shadow-lg animate-pulse">
-              <Star className="w-8 h-8 text-amber-500 fill-current" />
-            </div>
+
+          {/* Right Slider */}
+          <div className="relative w-full h-96 rounded-3xl overflow-hidden shadow-2xl">
+            {images.map((img, index) => (
+              <img
+                key={index}
+                src={img}
+                alt={`slide-${index}`}
+                className={`absolute top-0 left-0 w-full h-full object-cover transition-opacity duration-1000 ${
+                  index === currentIndex ? "opacity-100" : "opacity-0"
+                }`}
+              />
+            ))}
           </div>
+        </div>
+
+        {/* Slider ostidagi tavsif */}
+        <div className="mt-10 text-center px-4">
+          <p className="text-gray-700 dark:text-gray-300 text-lg max-w-3xl mx-auto">
+            {descriptions[currentLanguage]}
+          </p>
         </div>
       </div>
     </section>

@@ -1,40 +1,23 @@
 import React, { useState } from 'react';
 import { Globe, Moon, Sun } from 'lucide-react';
 import { useLanguage, Language } from '../contexts/LanguageContext';
+import { useTheme } from '../contexts/ThemeContext';
 
 const Header: React.FC = () => {
-  // Mobile drawer removed; only theme toggle remains
   const [isLanguageOpen, setIsLanguageOpen] = useState(false);
   const { currentLanguage, setLanguage, t } = useLanguage();
-  const [isDark, setIsDark] = useState(() => {
-    if (typeof window === 'undefined') return false;
-    const stored = localStorage.getItem('theme');
-    if (stored) return stored === 'dark';
-    return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-  });
-
-  React.useEffect(() => {
-    const root = document.documentElement;
-    if (isDark) {
-      root.classList.add('dark');
-      localStorage.setItem('theme', 'dark');
-    } else {
-      root.classList.remove('dark');
-      localStorage.setItem('theme', 'light');
-    }
-  }, [isDark]);
+  const { isDark, toggleTheme } = useTheme(); // <-- Context orqali olamiz
 
   const languages = [
     { code: 'kz' as Language, name: 'ҚАЗ', flag: '🇰🇿' },
     { code: 'ru' as Language, name: 'РУС', flag: '🇷🇺' },
-    { code: 'en' as Language, name: 'ENG', flag: '🇬🇧' }
+    { code: 'en' as Language, name: 'ENG', flag: '🇬🇧' },
   ];
 
   const navItems = [
     { key: 'home', href: '#home' },
     { key: 'menu', href: '#menu' },
-    // { key: 'about', href: '#about' },
-    { key: 'contact', href: '#contact' }
+    { key: 'contact', href: '#contact' },
   ];
 
   return (
@@ -61,7 +44,7 @@ const Header: React.FC = () => {
             ))}
           </nav>
 
-          {/* Language Selector & Mobile Menu */}
+          {/* Language Selector & Theme Toggle */}
           <div className="flex items-center space-x-4">
             {/* Language Selector */}
             <div className="relative">
@@ -72,7 +55,7 @@ const Header: React.FC = () => {
                 <Globe size={16} />
                 <span>{languages.find(lang => lang.code === currentLanguage)?.name}</span>
               </button>
-              
+
               {isLanguageOpen && (
                 <div className="absolute right-0 mt-2 w-32 bg-white rounded-lg shadow-lg py-2 z-10">
                   {languages.map((lang) => (
@@ -97,7 +80,7 @@ const Header: React.FC = () => {
             {/* Dark/Light Toggle */}
             <button
               aria-label="Toggle theme"
-              onClick={() => setIsDark(!isDark)}
+              onClick={toggleTheme} // <-- Contextdagi funksiya
               className="flex items-center gap-2 px-3 py-2 text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-amber-600 dark:hover:text-amber-400 transition-colors duration-200"
             >
               {isDark ? <Sun size={16} /> : <Moon size={16} />}
@@ -105,8 +88,6 @@ const Header: React.FC = () => {
             </button>
           </div>
         </div>
-
-        {/* Mobile navigation removed */}
       </div>
     </header>
   );

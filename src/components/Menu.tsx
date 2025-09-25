@@ -1,81 +1,78 @@
 "use client";
 
-import React, { useState } from "react";
-import { Utensils } from "lucide-react";
+import React from "react";
+import { Link } from "react-router-dom"; 
+import {
+  Coffee,
+  Utensils,
+  Salad,
+  Pizza,
+  Drumstick,
+  Soup,
+  Sandwich,
+  Beer,
+  GlassWater,
+  Package,
+  Layers,
+} from "lucide-react";
+import { FaMugHot } from "react-icons/fa";
 import { useLanguage } from "../contexts/LanguageContext";
-import { Worker, Viewer } from "@react-pdf-viewer/core";
-import "@react-pdf-viewer/core/lib/styles/index.css";
+import { useTheme } from "../contexts/ThemeContext"; 
+import { GiDonerKebab } from "react-icons/gi";
+import { MdKebabDining, MdOutlineMenuBook } from "react-icons/md";
+import { BiSushi } from "react-icons/bi";
+
+const categories = [
+  { id: "all", name: { kz: "Барлығы", ru: "Все", en: "All" }, icon: Utensils },
+  { id: "breakfast", name: { kz: "Таңғы ас", ru: "Завтрак", en: "Breakfast" }, icon: Sandwich },
+  { id: "salad", name: { kz: "Салаттар", ru: "Салаты", en: "Salads" }, icon: Salad },
+  { id: "first-course", name: { kz: "Бірінші тағам", ru: "Первое", en: "First course" }, icon: Soup },
+  { id: "second-course", name: { kz: "Екінші тағам", ru: "Второе", en: "Second course" }, icon: Drumstick },
+  { id: "kebab", name: { kz: "Шашлық", ru: "Шашлык", en: "Kebab" }, icon: MdKebabDining },
+  { id: "doner", name: { kz: "Дөнер", ru: "Донер", en: "Doner" }, icon: GiDonerKebab },
+  { id: "pizza", name: { kz: "Пицца", ru: "Пицца", en: "Pizza" }, icon: Pizza },
+  { id: "sushi", name: { kz: "Суши", ru: "Суши", en: "Sushi" }, icon: BiSushi },
+  { id: "basket", name: { kz: "Баскет", ru: "Баскет", en: "Basket" }, icon: Package },
+  { id: "drinks", name: { kz: "Сусындар", ru: "Напитки", en: "Drinks" }, icon: GlassWater },
+  { id: "tea", name: { kz: "Шай", ru: "Чай", en: "Tea" }, icon: FaMugHot },
+  { id: "coffee", name: { kz: "Кофе", ru: "Кофе", en: "Coffee" }, icon: Coffee },
+  { id: "combo", name: { kz: "Комбо", ru: "Комбо", en: "Combo" }, icon: Beer },
+  { id: "set", name: { kz: "Сет", ru: "Сет", en: "Set" }, icon: Layers },
+];
 
 const Menu: React.FC = () => {
-  const { currentLanguage } = useLanguage();
-  const [selectedPdf, setSelectedPdf] = useState<string | null>(null);
-
-  const pdfs = [
-    {
-      key: "limonadlar",
-      url: "/limonade.pdf",
-      names: {
-        kz: "Лимонадтар мәзірі (PDF)",
-        ru: "Меню лимонадов (PDF)",
-        en: "Lemonades Menu (PDF)",
-      },
-    },
-    {
-      key: "taomlar",
-      url: "/foods.pdf",
-      names: {
-        kz: "Тағамдар мәзірі (PDF)",
-        ru: "Меню блюд (PDF)",
-        en: "Dishes Menu (PDF)",
-      },
-    },
-  ];
+  const { currentLanguage, t } = useLanguage(); // <-- t funksiyasini olamiz
+  const { isDark } = useTheme();
 
   return (
-    <section id="menu" className="py-20 bg-white dark:bg-gray-900 transition-colors">
-      <div className="max-w-3xl mx-auto px-4 text-center">
-        {/* Header */}
-        <div className="flex items-center justify-center space-x-2 text-amber-600 mb-4">
-          <Utensils className="w-6 h-6" />
-          <span className="text-sm font-semibold uppercase tracking-wider">
-            {currentLanguage === "kz"
-              ? "Онлайн мәзір"
-              : currentLanguage === "ru"
-              ? "Онлайн меню"
-              : "Online Menu"}
-          </span>
-        </div>
-        <h2 className="text-4xl font-bold text-gray-900 dark:text-gray-100 mb-8">
-          {currentLanguage === "kz"
-            ? "Онлайн мәзір"
-            : currentLanguage === "ru"
-            ? "Онлайн меню"
-            : "Online Menu"}
-        </h2>
+    <div
+      className={`p-6 max-w-6xl mx-auto min-h-screen transition-colors ${
+        isDark ? "bg-gray-900 text-white" : "bg-white text-gray-900"
+      }`}
+    >
+      <h1 className="text-2xl font-bold mb-6 text-center flex items-center justify-center gap-2">
+        <MdOutlineMenuBook size={28} />
+        <span>{t("menu")}</span> {/* <- endi tilga qarab o'zgaradi */}
+      </h1>
 
-        {/* PDF tugmalar */}
-        <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
-          {pdfs.map((pdf) => (
-            <button
-              key={pdf.key}
-              onClick={() => setSelectedPdf(pdf.url)}
-              className="inline-block bg-gradient-to-r from-amber-500 to-orange-500 text-white px-8 py-4 rounded-full text-lg font-semibold hover:scale-105 transition-transform duration-200 shadow-lg"
-            >
-              📄 {pdf.names[currentLanguage]}
-            </button>
-          ))}
-        </div>
-
-        {/* PDF Viewer */}
-        {selectedPdf && (
-          <div style={{ height: "600px", border: "1px solid #ccc" }}>
-            <Worker workerUrl="https://unpkg.com/pdfjs-dist@3.9.179/build/pdf.worker.min.js">
-              <Viewer fileUrl={selectedPdf} />
-            </Worker>
-          </div>
-        )}
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+        {categories.map((cat) => (
+          <Link
+            key={cat.id}
+            to={`/category/${cat.id}`}
+            className={`flex flex-col items-center justify-center p-4 rounded-xl shadow transition
+              ${
+                isDark
+                  ? "bg-gray-800 hover:bg-gray-700 text-white"
+                  : "bg-gray-100 hover:bg-orange-100 text-gray-900"
+              }`}
+          >
+            <cat.icon size={28} className="mb-2 text-orange-500" />
+            <span>{cat.name[currentLanguage]}</span> {/* Tilga qarab o'zgaradi */}
+          </Link>
+        ))}
       </div>
-    </section>
+    </div>
   );
 };
 

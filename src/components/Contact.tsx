@@ -27,7 +27,7 @@ const Contact: React.FC = () => {
       icon: <AiFillTikTok className="w-6 h-6" />,
       color: "from-gray-800 to-gray-900",
       handle: "@batufoodlove",
-      link: "https://tiktok.com/@batufoodlove",
+      link: "https://tiktok.com/@batu_food_love_",
     },
   ];
 
@@ -35,7 +35,11 @@ const Contact: React.FC = () => {
   const addressTextRu = "г. Астана, проспект Жеңіс 53";
   const addressTextEn = "Astana city, Zhenis Avenue 53";
   const addressQuery = encodeURIComponent(
-    currentLanguage === "kz" ? addressTextKz : currentLanguage === "ru" ? addressTextRu : addressTextEn
+    currentLanguage === "kz"
+      ? addressTextKz
+      : currentLanguage === "ru"
+      ? addressTextRu
+      : addressTextEn
   );
   const yandexMapsUrl = `https://yandex.com/maps/?mode=search&text=${addressQuery}`;
 
@@ -71,12 +75,24 @@ const Contact: React.FC = () => {
     {
       icon: <Clock className="w-6 h-6 text-amber-600" />,
       title: t("workingHours"),
-      content:
-        currentLanguage === "kz"
-          ? "Күн сайын: 10:00 - 00:00"
-          : currentLanguage === "ru"
-          ? "Ежедневно: 10:00 - 00:00"
-          : "Daily: 10:00 - 00:00",
+      content: (
+        <div className="flex flex-col">
+          <span>
+            {currentLanguage === "kz"
+              ? "Күн сайын: 10:00 - 00:00"
+              : currentLanguage === "ru"
+              ? "Ежедневно: 10:00 - 00:00"
+              : "Daily: 10:00 - 00:00"}
+          </span>
+          <span className="text-amber-600 font-semibold mt-1">
+            {currentLanguage === "kz"
+              ? "Дөңер 24/7"
+              : currentLanguage === "ru"
+              ? "Донер 24/7"
+              : "Doner 24/7"}
+          </span>
+        </div>
+      ),
     },
   ];
 
@@ -130,7 +146,9 @@ const Contact: React.FC = () => {
                     <h4 className="font-semibold text-gray-900 dark:text-gray-100 mb-1">
                       {info.title}
                     </h4>
-                    <p className="text-gray-600 dark:text-gray-300">{info.content}</p>
+                    <p className="text-gray-600 dark:text-gray-300">
+                      {info.content}
+                    </p>
                   </div>
                 </div>
               ))}
@@ -162,7 +180,9 @@ const Contact: React.FC = () => {
                       <h4 className="font-semibold text-gray-900 dark:text-gray-100">
                         {social.name}
                       </h4>
-                      <p className="text-gray-600 dark:text-gray-300 text-sm">{social.handle}</p>
+                      <p className="text-gray-600 dark:text-gray-300 text-sm">
+                        {social.handle}
+                      </p>
                     </div>
                     <div className="ml-auto">
                       <div className="w-6 h-6 bg-gray-200 dark:bg-gray-700 rounded-full flex items-center justify-center group-hover:bg-amber-500 group-hover:text-white transition-colors duration-300">
@@ -176,7 +196,7 @@ const Contact: React.FC = () => {
 
             {/* Map Embed */}
             <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden">
-              <div className="relative w-full" style={{ paddingTop: '56.25%' }}>
+              <div className="relative w-full" style={{ paddingTop: "56.25%" }}>
                 <iframe
                   title="Yandex Map"
                   src={`https://yandex.com/map-widget/v1/?mode=search&text=${addressQuery}`}

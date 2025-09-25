@@ -1,17 +1,20 @@
 import React from "react";
-import { Heart, Instagram, MapPin, Phone } from "lucide-react";
+import { Heart, MapPin, Phone, Instagram } from "lucide-react";
 import { useLanguage } from "../contexts/LanguageContext";
 import { FaWhatsapp } from "react-icons/fa";
 import { AiFillTikTok } from "react-icons/ai";
+import { QRCode } from "react-qrcode-logo";
 
 const Footer: React.FC = () => {
   const { t, currentLanguage } = useLanguage();
+  const menuUrl = "http://192.168.100.57:5173/category/all"; // QR orqali ochiladigan menyu URL
 
   return (
     <footer className="relative bg-gradient-to-br from-gray-900 via-gray-900 to-black text-white py-16 overflow-hidden dark:from-black dark:via-gray-950 dark:to-gray-900">
-      {/* decorative background glow */}
+      {/* Decorative backgrounds */}
       <div className="pointer-events-none absolute -top-24 -right-24 h-80 w-80 rounded-full bg-amber-500/10 blur-3xl" />
       <div className="pointer-events-none absolute -bottom-24 -left-24 h-80 w-80 rounded-full bg-orange-500/10 blur-3xl" />
+
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid md:grid-cols-4 gap-8">
           {/* Brand */}
@@ -44,7 +47,6 @@ const Footer: React.FC = () => {
               {[
                 { key: "home", href: "#home" },
                 { key: "menu", href: "#menu" },
-                { key: "about", href: "#about" },
                 { key: "contact", href: "#contact" },
               ].map((link) => (
                 <a
@@ -85,39 +87,55 @@ const Footer: React.FC = () => {
           </div>
 
           {/* Social Media */}
+          {/* Social Media */}
           <div className="space-y-4 bg-white/5 rounded-2xl p-6 border border-white/10 backdrop-blur-sm hover:border-amber-400/30 transition-colors duration-300">
             <h4 className="text-lg font-semibold">{t("followUs")}</h4>
-            <div className="flex space-x-4">
+
+            {/* Social icons */}
+            <div className="flex items-center space-x-4">
               <a
-                href="https://instagram.com/batufoodlove"
+                href="https://www.instagram.com/batu_foodlove/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 bg-gradient-to-r from-pink-500 to-purple-600 rounded-lg flex items-center justify-center hover:scale-110 transition-transform duration-200 ring-0 hover:ring-4 ring-pink-500/20"
+                className="w-12 h-12 bg-gradient-to-r from-pink-500 to-purple-600 rounded-lg flex items-center justify-center hover:scale-110 transition-transform duration-200"
               >
-                <Instagram className="w-5 h-5" />
+                <Instagram className="w-6 h-6" />
               </a>
               <a
                 href="https://wa.me/77771234567"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 bg-gradient-to-r from-green-500 to-green-600 rounded-lg flex items-center justify-center hover:scale-110 transition-transform duration-200 ring-0 hover:ring-4 ring-green-500/20"
+                className="w-12 h-12 bg-gradient-to-r from-green-500 to-green-600 rounded-lg flex items-center justify-center hover:scale-110 transition-transform duration-200"
               >
-                <FaWhatsapp className="w-5 h-5" />
+                <FaWhatsapp className="w-6 h-6" />
               </a>
               <a
-                href="https://tiktok.com/@batufoodlove"
+                href="https://tiktok.com/@batu_food_love_"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 bg-gradient-to-r from-gray-800 to-black rounded-lg flex items-center justify-center hover:scale-110 transition-transform duration-200 ring-0 hover:ring-4 ring-gray-500/20"
+                className="w-12 h-12 bg-gradient-to-r from-gray-800 to-black rounded-lg flex items-center justify-center hover:scale-110 transition-transform duration-200"
               >
-                <AiFillTikTok className="w-5 h-5" />
+                <AiFillTikTok className="w-6 h-6" />
               </a>
             </div>
+          </div>
+
+          {/* QR kod containerini alohida qo‘shish */}
+          <div className="mt-4 flex flex-col items-center justify-center">
+            <div className="w-28 h-28 bg-white p-2 rounded-lg flex items-center justify-center">
+              <QRCode
+                value={menuUrl}
+                size={120}
+                bgColor="#ffffff"
+                fgColor="#000000"
+              />
+            </div>
+            <span className="text-xs text-gray-300 mt-3">Menu</span>
           </div>
         </div>
 
         {/* Bottom Bar */}
-        <div className="border-t border-white/10 mt-10 pt-8 text-center bg-white/5 rounded-xl backdrop-blur-sm">
+        <div className="border-t border-white/10 mt-10 pb-5 pt-8 text-center bg-white/5 rounded-xl backdrop-blur-sm">
           <p className="text-gray-300 text-sm">
             © 2025 BatuFoodLove. {t("allRightsReserved")}.
           </p>

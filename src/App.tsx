@@ -1,25 +1,40 @@
-import React from 'react';
-import { LanguageProvider } from './contexts/LanguageContext';
-import Header from './components/Header';
-import Hero from './components/Hero';
-// import About from './components/About';
-import Menu from './components/Menu';
-import OnlineOrder from './components/OnlineOrder';
-import Contact from './components/Contact';
-import Footer from './components/Footer';
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { LanguageProvider } from "./contexts/LanguageContext";
+import Header from "./components/Header";
+import Hero from "./components/Hero";
+import Menu from "./components/Menu";
+
+import OnlineOrder from "./components/OnlineOrder";
+import Contact from "./components/Contact";
+import Footer from "./components/Footer";
+
+import { ThemeProvider } from "./contexts/ThemeContext";
+import CategoryPage from "./components/CategoryPage";
 
 function App() {
   return (
     <LanguageProvider>
-      <div className="min-h-screen bg-white text-gray-900 dark:bg-gray-900 dark:text-gray-100 transition-colors">
-        <Header />
-        <Hero />
-        {/* <About /> */}
-        <Menu />
-        <OnlineOrder />
-        <Contact />
-        <Footer />
-      </div>
+      <ThemeProvider>
+        <Router>
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <>
+                  <Header />
+                  <Hero />
+                  <Menu />
+                  <OnlineOrder />
+                  <Contact />
+                  <Footer />
+                </>
+              }
+            />
+            <Route path="/category/:id" element={<CategoryPage />} />
+          </Routes>
+        </Router>
+      </ThemeProvider>
     </LanguageProvider>
   );
 }
