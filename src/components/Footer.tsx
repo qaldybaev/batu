@@ -7,7 +7,7 @@ import { QRCode } from "react-qrcode-logo";
 
 const Footer: React.FC = () => {
   const { t, currentLanguage } = useLanguage();
-  const menuUrl = "http://192.168.100.57:5173/category/all"; // QR orqali ochiladigan menyu URL
+  const menuUrl = "https://batu-xi.vercel.app/category/all"; // QR orqali ochiladigan menyu URL
 
   return (
     <footer className="relative bg-gradient-to-br from-gray-900 via-gray-900 to-black text-white py-16 overflow-hidden dark:from-black dark:via-gray-950 dark:to-gray-900">
