@@ -12,60 +12,81 @@ const Contact: React.FC = () => {
       name: "Instagram",
       icon: <Instagram className="w-6 h-6" />,
       color: "from-pink-500 to-purple-600",
-      handle: "@batufoodlove",
+      handle: "@batu_foodlove",
       link: "https://www.instagram.com/batu_foodlove/",
     },
     {
       name: "WhatsApp",
       icon: <FaWhatsapp className="w-6 h-6" />,
       color: "from-green-500 to-green-600",
-      handle: "+7 777 123 4567",
-      link: "https://wa.me/77771234567",
+      handle: "+7 775 396 7888",
+      link: "https://wa.me/77753967888",
     },
     {
       name: "TikTok",
       icon: <AiFillTikTok className="w-6 h-6" />,
       color: "from-gray-800 to-gray-900",
-      handle: "@batufoodlove",
+      handle: "@batu_food_love_",
       link: "https://tiktok.com/@batu_food_love_",
     },
   ];
 
-  const addressTextKz = "Астана қаласы, Жеңіс даңғылы 53";
-  const addressTextRu = "г. Астана, проспект Жеңіс 53";
-  const addressTextEn = "Astana city, Zhenis Avenue 53";
-  const addressQuery = encodeURIComponent(
-    currentLanguage === "kz"
-      ? addressTextKz
-      : currentLanguage === "ru"
-      ? addressTextRu
-      : addressTextEn
-  );
-  const yandexMapsUrl = `https://yandex.com/maps/?mode=search&text=${addressQuery}`;
+  // 3 ta manzil
+  const addressList = [
+    {
+      kz: "Астана қаласы, Жеңіс даңғылы 53",
+      ru: "г. Астана, проспект Жеңис 53",
+      en: "Astana city, Zhenis Avenue 53",
+    },
+    {
+      kz: "Астана қаласы, Алматы-3, ТД Сауран 4-этаж",
+      ru: "г. Астана, Алматы-3,ТД Сауран 4-этаж",
+      en: "Astana city, Almaty-3,TD Sauran 4th floor",
+    },
+    {
+      kz: "Астана қаласы, Қ. Сәтпаева 33",
+      ru: "г. Астана, ул. К. Сатпаева 33",
+      en: "Astana city, K. Satpaeva 33",
+    },
+  ];
 
+  // Contact info
   const contactInfo = [
     {
       icon: <MapPin className="w-6 h-6 text-amber-600" />,
       title: t("address"),
       content: (
-        <a
-          href={yandexMapsUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-amber-700 hover:text-amber-900 underline decoration-amber-400/60 underline-offset-2"
-        >
-          {currentLanguage === "kz"
-            ? addressTextKz
-            : currentLanguage === "ru"
-            ? addressTextRu
-            : addressTextEn}
-        </a>
+        <div className="flex flex-col space-y-2">
+          {addressList.map((addr, index) => {
+            const addressText =
+              currentLanguage === "kz"
+                ? addr.kz
+                : currentLanguage === "ru"
+                ? addr.ru
+                : addr.en;
+
+            const addressQuery = encodeURIComponent(addressText);
+            const yandexMapsUrl = `https://yandex.com/maps/?mode=search&text=${addressQuery}`;
+
+            return (
+              <a
+                key={index}
+                href={yandexMapsUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-amber-700 hover:text-amber-900 underline decoration-amber-400/60 underline-offset-2"
+              >
+                {addressText}
+              </a>
+            );
+          })}
+        </div>
       ),
     },
     {
       icon: <Phone className="w-6 h-6 text-amber-600" />,
       title: t("phone"),
-      content: "+7 777 123 4567",
+      content: "+7 775 396 7888",
     },
     {
       icon: <Mail className="w-6 h-6 text-amber-600" />,
@@ -199,7 +220,9 @@ const Contact: React.FC = () => {
               <div className="relative w-full" style={{ paddingTop: "56.25%" }}>
                 <iframe
                   title="Yandex Map"
-                  src={`https://yandex.com/map-widget/v1/?mode=search&text=${addressQuery}`}
+                  src={`https://yandex.com/map-widget/v1/?mode=search&text=${encodeURIComponent(
+                    addressList[0][currentLanguage === "kz" ? "kz" : currentLanguage === "ru" ? "ru" : "en"]
+                  )}`}
                   className="absolute inset-0 w-full h-full border-0"
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
@@ -213,19 +236,30 @@ const Contact: React.FC = () => {
                     ? "Наше местоположение"
                     : "Our Location"}
                 </div>
-                <div className="text-sm text-amber-700 mt-1">
-                  <a
-                    href={yandexMapsUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="hover:text-amber-900 underline decoration-amber-400/60 underline-offset-2"
-                  >
-                    {currentLanguage === "kz"
-                      ? addressTextKz
-                      : currentLanguage === "ru"
-                      ? addressTextRu
-                      : addressTextEn}
-                  </a>
+                <div className="text-sm text-amber-700 mt-1 space-y-1">
+                  {addressList.map((addr, index) => {
+                    const addressText =
+                      currentLanguage === "kz"
+                        ? addr.kz
+                        : currentLanguage === "ru"
+                        ? addr.ru
+                        : addr.en;
+                    const yandexMapsUrl = `https://yandex.com/maps/?mode=search&text=${encodeURIComponent(
+                      addressText
+                    )}`;
+                    return (
+                      <div key={index}>
+                        <a
+                          href={yandexMapsUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="hover:text-amber-900 underline decoration-amber-400/60 underline-offset-2"
+                        >
+                          {addressText}
+                        </a>
+                      </div>
+                    );
+                  })}
                 </div>
               </div>
             </div>

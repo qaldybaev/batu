@@ -6,26 +6,36 @@ const Hero: React.FC = () => {
   const { t, currentLanguage } = useLanguage();
 
   const images = [
-    "/foto1.png",
-    "/foto2.png",
-    "/foto3.png",
-    "/foto4.png",
-    "/foto5.png",
-    "/foto6.png",
-    "/foto7.png",
-    "/foto8.png",
-    "/foto9.png",
+    "/foto1.webp",
+    "/foto2.webp",
+    "/foto3.webp",
+    "/foto4.webp",
+    "/foto5.webp",
+    "/foto6.webp",
+    "/foto7.webp",
+    "/foto8.webp",
+    "/foto9.webp",
   ];
+
   const [currentIndex, setCurrentIndex] = useState(0);
 
+  // ✅ Slaydlarni avtomatik almashtirish
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % images.length);
     }, 4000);
     return () => clearInterval(interval);
-  }, []);
+  }, [images.length]);
 
-  // Kafe tavsifi (tilga qarab)
+  // ✅ Rasmlarni oldindan yuklash (preload)
+  useEffect(() => {
+    images.forEach((src) => {
+      const img = new Image();
+      img.src = src;
+    });
+  }, [images]);
+
+  // Kafe tavsifi
   const descriptions: { [key: string]: string } = {
     kz: "Batu – бұл тек қана дәмді тағамдар емес, сонымен бірге жақсы эмоциялар мен есте қаларлық сәттердің ошағы. Біз әрбір тағамды сүйіспеншілікпен дайындап, әр келушіні ерекше атмосферамен қарсы аламыз. Бізбен бірге дәмді тағамның, жылулық пен көңілді сәттердің куәсі болыңыз!",
     ru: "Batu – это не просто вкусная еда, а место, где рождаются хорошие эмоции и незабываемые моменты. Мы готовим каждое блюдо с любовью и встречаем каждого гостя в особой атмосфере. Станьте свидетелем настоящего вкуса, тепла и радости вместе с нами!",
@@ -54,16 +64,17 @@ const Hero: React.FC = () => {
             </h1>
           </div>
 
-          {/* Right Slider */}
+          {/* ✅ Slideshow */}
           <div className="relative w-full h-96 rounded-3xl overflow-hidden shadow-2xl">
-            {images.map((img, index) => (
+            {images.map((src, index) => (
               <img
                 key={index}
-                src={img}
+                src={src}
                 alt={`slide-${index}`}
                 className={`absolute top-0 left-0 w-full h-full object-cover transition-opacity duration-1000 ${
                   index === currentIndex ? "opacity-100" : "opacity-0"
                 }`}
+                loading="lazy"
               />
             ))}
           </div>

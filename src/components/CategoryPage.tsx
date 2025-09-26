@@ -5,60 +5,60 @@ import { ArrowUp } from "lucide-react";
 import { GiExitDoor } from "react-icons/gi";
 
 const menuImages = [
-  { src: "/menu2.png" },
-  { src: "/menu.png" },
-  { src: "/zavtrk1.png", category: "breakfast" },
-  { src: "/zavtrk2.png", category: "breakfast" },
-  { src: "/salat1.png", category: "salad" },
-  { src: "/salat2.png", category: "salad" },
-  { src: "/salat3.png", category: "salad" },
-  { src: "/1food1.png", category: "first-course" },
-  { src: "/1food2.png", category: "first-course" },
-  { src: "/1food3.png", category: "first-course" },
-  { src: "/1food4.png", category: "first-course" },
-  { src: "/2food1.png", category: "second-course" },
-  { src: "/2food2.png", category: "second-course" },
-  { src: "/2food3.png", category: "second-course" },
-  { src: "/2food4.png", category: "second-course" },
-  { src: "/2food5.png", category: "second-course" },
-  { src: "/kitayiski1.png", category: "second-course" },
-  { src: "/kitayiski2.png", category: "second-course" },
-  { src: "/2food6.png", category: "second-course" },
-  { src: "/2food7.png", category: "second-course" },
-  { src: "/na zakaz.png", category: "second-course" },
-  { src: "/shashlik1.png", category: "kebab" },
-  { src: "/shashlik2.png", category: "kebab" },
-  { src: "/freesh.png", category: "kebab" },
-  { src: "/steyk.png", category: "kebab" },
-  { src: "/doner1.png", category: "doner" },
-  { src: "/fasfood.png", category: "doner" },
-  { src: "/pitssa1.png", category: "pizza" },
-  { src: "/pitssa2.png", category: "pizza" },
-  { src: "/pitssa3.png", category: "pizza" },
-  { src: "/pitssa4.png", category: "pizza" },
-  { src: "/pide.png", category: "pizza" },
-  { src: "/sushi1.png", category: "sushi" },
-  { src: "/shushi2.png", category: "sushi" },
-  { src: "/sushi3.png", category: "sushi" },
-  { src: "/sushi4.png", category: "sushi" },
-  { src: "/basket.png", category: "basket" },
-  { src: "/basket2.png", category: "basket" },
-  { src: "/kombo.png", category: "combo" },
-  { src: "/kombo2.png", category: "combo" },
-  { src: "/set.png", category: "set" },
-  { src: "/limonad1.png", category: "drinks" },
-  { src: "/limonad2.png", category: "drinks" },
-  { src: "/limonad3.png", category: "drinks" },
-  { src: "/sumuzi.png", category: "drinks" },
-  { src: "/kokteyl.png", category: "drinks" },
-  { src: "/napitki.png", category: "drinks" },
-  { src: "/chay.png", category: "tea" },
-  { src: "/chay2.png", category: "tea" },
-  { src: "/chay3.png", category: "tea" },
-  { src: "/kofe.png", category: "coffee" },
-  { src: "/kofe2.png", category: "coffee" },
-  { src: "/kofe3.png", category: "coffee" },
-  { src: "/pasudi.png" },
+  { src: "/menu2.webp" },
+  { src: "/menu.webp" },
+  { src: "/zavtrk1.webp", category: "breakfast" },
+  { src: "/zavtrk2.webp", category: "breakfast" },
+  { src: "/salat1.webp", category: "salad" },
+  { src: "/salat2.webp", category: "salad" },
+  { src: "/salat3.webp", category: "salad" },
+  { src: "/1food1.webp", category: "first-course" },
+  { src: "/1food2.webp", category: "first-course" },
+  { src: "/1food3.webp", category: "first-course" },
+  { src: "/1food4.webp", category: "first-course" },
+  { src: "/2food1.webp", category: "second-course" },
+  { src: "/2food2.webp", category: "second-course" },
+  { src: "/2food3.webp", category: "second-course" },
+  { src: "/2food4.webp", category: "second-course" },
+  { src: "/2food5.webp", category: "second-course" },
+  { src: "/kitayiski1.webp", category: "second-course" },
+  { src: "/kitayiski2.webp", category: "second-course" },
+  { src: "/2food6.webp", category: "second-course" },
+  { src: "/2food7.webp", category: "second-course" },
+  { src: "/na zakaz.webp", category: "second-course" },
+  { src: "/shashlik1.webp", category: "kebab" },
+  { src: "/shashlik2.webp", category: "kebab" },
+  { src: "/freesh.webp", category: "kebab" },
+  { src: "/steyk.webp", category: "kebab" },
+  { src: "/doner1.webp", category: "doner" },
+  { src: "/fasfood.webp", category: "doner" },
+  { src: "/pitssa1.webp", category: "pizza" },
+  { src: "/pitssa2.webp", category: "pizza" },
+  { src: "/pitssa3.webp", category: "pizza" },
+  { src: "/pitssa4.webp", category: "pizza" },
+  { src: "/pide.webp", category: "pizza" },
+  { src: "/sushi1.webp", category: "sushi" },
+  { src: "/shushi2.webp", category: "sushi" },
+  { src: "/sushi3.webp", category: "sushi" },
+  { src: "/sushi4.webp", category: "sushi" },
+  { src: "/basket.webp", category: "basket" },
+  { src: "/basket2.webp", category: "basket" },
+  { src: "/kombo.webp", category: "combo" },
+  { src: "/kombo2.webp", category: "combo" },
+  { src: "/set.webp", category: "set" },
+  { src: "/limonad1.webp", category: "drinks" },
+  { src: "/limonad2.webp", category: "drinks" },
+  { src: "/limonad3.webp", category: "drinks" },
+  { src: "/sumuzi.webp", category: "drinks" },
+  { src: "/kokteyl.webp", category: "drinks" },
+  { src: "/napitki.webp", category: "drinks" },
+  { src: "/chay.webp", category: "tea" },
+  { src: "/chay2.webp", category: "tea" },
+  { src: "/chay3.webp", category: "tea" },
+  { src: "/kofe.webp", category: "coffee" },
+  { src: "/kofe2.webp", category: "coffee" },
+  { src: "/kofe3.webp", category: "coffee" },
+  { src: "/pasudi.webp" },
 ];
 
 const CategoryPage: React.FC = () => {
@@ -66,18 +66,9 @@ const CategoryPage: React.FC = () => {
   const { isDark } = useTheme();
   const navigate = useNavigate();
   const [showScroll, setShowScroll] = useState(false);
-  const [images, setImages] = useState(menuImages);
 
-  // ✅ LocalStorage va memory caching
+  // ✅ Rasmlarni oldindan yuklab olish (preload)
   useEffect(() => {
-    const cached = localStorage.getItem("menuImages");
-    if (cached) {
-      setImages(JSON.parse(cached));
-    } else {
-      localStorage.setItem("menuImages", JSON.stringify(menuImages));
-    }
-
-    // ✅ Preload rasmlar memory-ga
     menuImages.forEach((img) => {
       const image = new Image();
       image.src = img.src;
@@ -85,9 +76,7 @@ const CategoryPage: React.FC = () => {
   }, []);
 
   const filteredImages =
-    id === "all"
-      ? images
-      : images.filter((img) => img.category === id);
+    id === "all" ? menuImages : menuImages.filter((img) => img.category === id);
 
   useEffect(() => {
     const handleScroll = () => setShowScroll(window.scrollY > 300);
@@ -119,7 +108,8 @@ const CategoryPage: React.FC = () => {
             <div key={index} className="overflow-hidden rounded-xl shadow">
               <img
                 src={img.src}
-                alt={img.category}
+                alt={img.category || "menu image"}
+                loading="lazy"  // ✅ sekin yuklansin
                 className="w-full h-auto hover:scale-105 transition-transform"
               />
             </div>

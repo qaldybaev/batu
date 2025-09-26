@@ -19,19 +19,20 @@ const OnlineOrder: React.FC = () => {
       deliveryTime: "30-40 мин",
       link: "https://eda.yandex.kz/ru-kz/astana/r/baty_doner?placeSlug=_baty_doner",
     },
-    {
-      name: "Bold",
-      description:
-        currentLanguage === "kz"
-          ? "Bold қолданбасы арқылы тапсырыс"
-          : currentLanguage === "ru"
-          ? "Заказ через приложение Bold"
-          : "Order through Bold app",
-      color: "from-green-500 to-green-600",
-      logo: "/images.jpeg", // ✅ Bold rasmi shu papkada bo‘lishi kerak
-      deliveryTime: "25-35 мин",
-      link: "https://wolt.com/ru/kaz/nur-sultan/restaurant/batu-astana?no_universal_links=true",
-    },
+   {
+  name: "Wolt",
+  description:
+    currentLanguage === "kz"
+      ? "Wolt қолданбасы арқылы тапсырыс"
+      : currentLanguage === "ru"
+      ? "Заказ через приложение Wolt"
+      : "Order through Wolt app",
+  color: "from-blue-400 to-blue-400", 
+  logo: "/wolt2.png", 
+  deliveryTime: "25-35 мин",
+  link: "https://wolt.com/ru/kaz/nur-sultan/restaurant/batu-astana?no_universal_links=true",
+},
+
   ];
 
   return (
