@@ -227,8 +227,8 @@ const Contact: React.FC = () => {
             </div>
 
             {/* Map Embed */}
-            <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden">
-              {/* Yandex Map */}
+            {/* <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden">
+           
               <div className="relative w-full" style={{ paddingTop: "56.25%" }}>
                 <iframe
                   title="Yandex Map"
@@ -247,7 +247,7 @@ const Contact: React.FC = () => {
                 />
               </div>
 
-              {/* 2GIS links */}
+          
               <div className="p-4 border-t border-gray-100 dark:border-gray-700">
                 <div className="text-gray-600 dark:text-gray-300">
                   {currentLanguage === "kz"
@@ -282,7 +282,7 @@ const Contact: React.FC = () => {
                   })}
                 </div>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

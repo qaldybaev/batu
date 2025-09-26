@@ -55,6 +55,7 @@ const menuImages = [
   { src: "/chay.webp", category: "tea" },
   { src: "/chay2.webp", category: "tea" },
   { src: "/chay3.webp", category: "tea" },
+  { src: "/desert.webp", category: "tea" },
   { src: "/kofe.webp", category: "coffee" },
   { src: "/kofe2.webp", category: "coffee" },
   { src: "/kofe3.webp", category: "coffee" },

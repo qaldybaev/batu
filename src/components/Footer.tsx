@@ -102,13 +102,16 @@ const Footer: React.FC = () => {
                 <Instagram className="w-6 h-6" />
               </a>
               <a
-                href="https://wa.me/77753967888"
+                href={`https://wa.me/77753967888?text=${encodeURIComponent(
+                  "Здравствуйте! Можно сделать заказ?"
+                )}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-12 h-12 bg-gradient-to-r from-green-500 to-green-600 rounded-lg flex items-center justify-center hover:scale-110 transition-transform duration-200"
               >
                 <FaWhatsapp className="w-6 h-6" />
               </a>
+
               <a
                 href="https://tiktok.com/@batu_food_love_"
                 target="_blank"
