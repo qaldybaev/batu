@@ -1,13 +1,13 @@
 import React from "react";
-import { Heart, MapPin, Phone, Instagram } from "lucide-react";
+import { Heart, Instagram } from "lucide-react";
 import { useLanguage } from "../contexts/LanguageContext";
 import { FaWhatsapp } from "react-icons/fa";
 import { AiFillTikTok } from "react-icons/ai";
-import { QRCode } from "react-qrcode-logo";
+// import { QRCode } from "react-qrcode-logo";
 
 const Footer: React.FC = () => {
   const { t, currentLanguage } = useLanguage();
-  const menuUrl = "https://batu-xi.vercel.app/#/category/all";
+  // const menuUrl = "https://batu-xi.vercel.app/#/category/all";
 
   return (
     <footer className="relative bg-gradient-to-br from-gray-900 via-gray-900 to-black text-white py-16 overflow-hidden dark:from-black dark:via-gray-950 dark:to-gray-900">
@@ -66,7 +66,7 @@ const Footer: React.FC = () => {
           </div>
 
           {/* Contact Info */}
-          <div className="space-y-4 bg-white/5 rounded-2xl p-6 border border-white/10 backdrop-blur-sm hover:border-amber-400/30 transition-colors duration-300">
+          {/* <div className="space-y-4 bg-white/5 rounded-2xl p-6 border border-white/10 backdrop-blur-sm hover:border-amber-400/30 transition-colors duration-300">
             <h4 className="text-lg font-semibold">{t("contactTitle")}</h4>
             <div className="space-y-3">
               <div className="flex items-center space-x-3 text-sm bg-white/5 rounded-lg px-3 py-2 border border-white/10">
@@ -84,7 +84,7 @@ const Footer: React.FC = () => {
                 <span className="text-gray-300">+7 777 123 4567</span>
               </div>
             </div>
-          </div>
+          </div> */}
 
           {/* Social Media */}
           {/* Social Media */}
@@ -121,7 +121,7 @@ const Footer: React.FC = () => {
           </div>
 
           {/* QR kod containerini alohida qo‘shish */}
-          <div className="mt-4 flex flex-col items-center justify-center">
+          {/* <div className="mt-4 flex flex-col items-center justify-center">
             <div className="w-28 h-28 bg-white p-2 rounded-lg flex items-center justify-center">
               <QRCode
                 value={menuUrl}
@@ -130,7 +130,7 @@ const Footer: React.FC = () => {
                 fgColor="#000000"
               />
             </div>
-          </div>
+          </div> */}
         </div>
 
         {/* Bottom Bar */}

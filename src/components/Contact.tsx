@@ -7,6 +7,7 @@ import { useLanguage } from "../contexts/LanguageContext";
 const Contact: React.FC = () => {
   const { t, currentLanguage } = useLanguage();
 
+  // Social links
   const socialLinks = [
     {
       name: "Instagram",
@@ -20,7 +21,10 @@ const Contact: React.FC = () => {
       icon: <FaWhatsapp className="w-6 h-6" />,
       color: "from-green-500 to-green-600",
       handle: "+7 775 396 7888",
-      link: "https://wa.me/77753967888",
+
+      link: `https://wa.me/77753967888?text=${encodeURIComponent(
+        "Здравствуйте! Можно сделать заказ?"
+      )}`,
     },
     {
       name: "TikTok",
@@ -31,11 +35,10 @@ const Contact: React.FC = () => {
     },
   ];
 
-  // 3 ta manzil
   const addressList = [
     {
       kz: "Астана қаласы, Жеңіс даңғылы 53",
-      ru: "г. Астана, проспект Жеңис 53",
+      ru: "г. Астана, проспект Женис 53",
       en: "Astana city, Zhenis Avenue 53",
     },
     {
@@ -65,13 +68,14 @@ const Contact: React.FC = () => {
                 ? addr.ru
                 : addr.en;
 
-            const addressQuery = encodeURIComponent(addressText);
-            const yandexMapsUrl = `https://yandex.com/maps/?mode=search&text=${addressQuery}`;
+            const gisUrl = `https://2gis.kz/astana/search/${encodeURIComponent(
+              addressText
+            )}`;
 
             return (
               <a
                 key={index}
-                href={yandexMapsUrl}
+                href={gisUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-amber-700 hover:text-amber-900 underline decoration-amber-400/60 underline-offset-2"
@@ -86,7 +90,14 @@ const Contact: React.FC = () => {
     {
       icon: <Phone className="w-6 h-6 text-amber-600" />,
       title: t("phone"),
-      content: "+7 775 396 7888",
+      content: (
+        <a
+          href="tel:+77753967888"
+          className="text-amber-700 hover:text-amber-900 underline decoration-amber-400/60 underline-offset-2"
+        >
+          +7 775 396 7888
+        </a>
+      ),
     },
     {
       icon: <Mail className="w-6 h-6 text-amber-600" />,
@@ -217,17 +228,26 @@ const Contact: React.FC = () => {
 
             {/* Map Embed */}
             <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden">
+              {/* Yandex Map */}
               <div className="relative w-full" style={{ paddingTop: "56.25%" }}>
                 <iframe
                   title="Yandex Map"
                   src={`https://yandex.com/map-widget/v1/?mode=search&text=${encodeURIComponent(
-                    addressList[0][currentLanguage === "kz" ? "kz" : currentLanguage === "ru" ? "ru" : "en"]
+                    addressList[0][
+                      currentLanguage === "kz"
+                        ? "kz"
+                        : currentLanguage === "ru"
+                        ? "ru"
+                        : "en"
+                    ]
                   )}`}
                   className="absolute inset-0 w-full h-full border-0"
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
                 />
               </div>
+
+              {/* 2GIS links */}
               <div className="p-4 border-t border-gray-100 dark:border-gray-700">
                 <div className="text-gray-600 dark:text-gray-300">
                   {currentLanguage === "kz"
@@ -244,13 +264,13 @@ const Contact: React.FC = () => {
                         : currentLanguage === "ru"
                         ? addr.ru
                         : addr.en;
-                    const yandexMapsUrl = `https://yandex.com/maps/?mode=search&text=${encodeURIComponent(
+                    const gisUrl = `https://2gis.kz/astana/search/${encodeURIComponent(
                       addressText
                     )}`;
                     return (
                       <div key={index}>
                         <a
-                          href={yandexMapsUrl}
+                          href={gisUrl}
                           target="_blank"
                           rel="noopener noreferrer"
                           className="hover:text-amber-900 underline decoration-amber-400/60 underline-offset-2"

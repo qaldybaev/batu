@@ -9,3 +9,6 @@
   -ms-overflow-style: none;  /* IE va Edge uchun */
   scrollbar-width: none;  /* Firefox uchun */
 }
+a{
+  text-decoration: none;
+}
