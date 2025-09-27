@@ -55,7 +55,7 @@ const Menu: React.FC = () => {
         <span>{t("menu")}</span> {/* <- endi tilga qarab o'zgaradi */}
       </h1>
 
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+      <div id="menu" className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
         {categories.map((cat) => (
           <Link
             key={cat.id}

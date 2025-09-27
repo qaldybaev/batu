@@ -1,11 +1,26 @@
 import React from "react";
 import { ShoppingCart, Truck, Clock } from "lucide-react";
+import { FaWhatsapp } from "react-icons/fa"; // ✅ WhatsApp iconi
 import { useLanguage } from "../contexts/LanguageContext";
 
 const OnlineOrder: React.FC = () => {
   const { t, currentLanguage } = useLanguage();
 
   const orderMethods = [
+    {
+      name: "WhatsApp",
+      description:
+        currentLanguage === "kz"
+          ? "Тікелей WhatsApp арқылы тапсырыс беру"
+          : currentLanguage === "ru"
+          ? "Прямой заказ через WhatsApp"
+          : "Direct order via WhatsApp",
+      color: "from-green-500 to-green-600",
+      logo: "/whatsapp.png",
+      deliveryTime: "30-40 мин",
+
+      link: "https://wa.me/77753967888?text=Здравствуйте,%20можно%20сделать%20заказ?",
+    },
     {
       name: "Yandex",
       description:
@@ -15,30 +30,31 @@ const OnlineOrder: React.FC = () => {
           ? "Быстрая доставка через Yandex Еда"
           : "Fast delivery via Yandex Food",
       color: "from-yellow-400 to-yellow-500",
-      logo: "/yandex.png", // ✅ Yandex rasmi shu papkada bo‘lishi kerak (public/images/)
+      logo: "/yandex.png",
       deliveryTime: "30-40 мин",
       link: "https://eda.yandex.kz/ru-kz/astana/r/baty_doner?placeSlug=_baty_doner",
     },
-   {
-  name: "Wolt",
-  description:
-    currentLanguage === "kz"
-      ? "Wolt қолданбасы арқылы тапсырыс"
-      : currentLanguage === "ru"
-      ? "Заказ через приложение Wolt"
-      : "Order through Wolt app",
-  color: "from-blue-400 to-blue-400", 
-  logo: "/wolt2.png", 
-  deliveryTime: "25-35 мин",
-  link: "https://wolt.com/ru/kaz/nur-sultan/restaurant/batu-astana?no_universal_links=true",
-},
-
+    {
+      name: "Wolt",
+      description:
+        currentLanguage === "kz"
+          ? "Wolt қолданбасы арқылы тапсырыс"
+          : currentLanguage === "ru"
+          ? "Заказ через приложение Wolt"
+          : "Order through Wolt app",
+      color: "from-blue-400 to-blue-500",
+      logo: "/wolt2.png",
+      deliveryTime: "25-35 мин",
+      link: "https://wolt.com/ru/kaz/nur-sultan/restaurant/batu-astana?no_universal_links=true",
+    },
   ];
 
   return (
-    <section className="py-20 bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-black transition-colors">
+    <section
+      id="order"
+      className="py-20 bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-black transition-colors"
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
         <div className="text-center mb-16">
           <div className="flex items-center justify-center space-x-2 text-amber-600 mb-4">
             <ShoppingCart className="w-6 h-6" />
@@ -59,7 +75,7 @@ const OnlineOrder: React.FC = () => {
         </div>
 
         {/* Order Methods */}
-        <div className="grid md:grid-cols-2 gap-8 mb-12">
+        <div className="grid md:grid-cols-3 gap-8 mb-12">
           {orderMethods.map((method) => (
             <div
               key={method.name}
@@ -70,18 +86,24 @@ const OnlineOrder: React.FC = () => {
               <div className="p-8">
                 <div className="flex items-center space-x-4 mb-6">
                   <div className="flex items-center justify-center">
-                    <img
-                      src={method.logo}
-                      alt={method.name}
-                      className="w-16 h-16 object-contain rounded"
-                    />
+                    {method.name === "WhatsApp" ? (
+                      <FaWhatsapp className="w-16 h-16 text-green-500" />
+                    ) : (
+                      <img
+                        src={method.logo}
+                        alt={method.name}
+                        className="w-16 h-16 object-contain rounded"
+                      />
+                    )}
                   </div>
 
                   <div>
                     <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-100">
                       {method.name}
                     </h3>
-                    <p className="text-gray-600 dark:text-gray-300">{method.description}</p>
+                    <p className="text-gray-600 dark:text-gray-300">
+                      {method.description}
+                    </p>
                   </div>
                 </div>
 
@@ -102,7 +124,7 @@ const OnlineOrder: React.FC = () => {
                   </div>
                 </div>
 
-                {/* ✅ Tugma o‘rniga <a> link ishlatamiz */}
+                {/* Tugma */}
                 <a
                   href={method.link}
                   target="_blank"

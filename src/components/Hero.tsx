@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Heart } from "lucide-react";
+import { Heart, Phone, ShoppingBag } from "lucide-react"; // ✅ yangi iconlar qo‘shildi
 import { useLanguage } from "../contexts/LanguageContext";
 
 const Hero: React.FC = () => {
@@ -41,6 +41,7 @@ const Hero: React.FC = () => {
     ru: "Batu – это не просто вкусная еда, а место, где рождаются хорошие эмоции и незабываемые моменты. Мы готовим каждое блюдо с любовью и встречаем каждого гостя в особой атмосфере. Станьте свидетелем настоящего вкуса, тепла и радости вместе с нами!",
     en: "Batu is not just a place for delicious food, but a haven where good emotions and unforgettable moments come alive. Every dish is prepared with love, and every guest is welcomed into a unique and warm atmosphere. Join us and experience the true taste of joy, warmth, and culinary delight!",
   };
+  
 
   return (
     <section
@@ -62,9 +63,36 @@ const Hero: React.FC = () => {
                 {t("heroTitle")}
               </span>
             </h1>
+
+            <div className="flex flex-wrap gap-4 mt-6">
+              <div className="flex flex-wrap gap-4 mt-6">
+                {/* 📞 Pozvonit */}
+                <a
+                  href="tel:+7 775 396 7888"
+                  className="relative overflow-hidden flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-amber-500 to-orange-600 text-white font-semibold shadow-lg hover:scale-105 transition-transform"
+                >
+                  <Phone className="w-5 h-5 relative z-10" />
+                  <span className="relative z-10">{t("call")}</span>
+                </a>
+
+                {/* 🛍 Zakazat dostavku */}
+                <button
+                  onClick={() => {
+                    document
+                      .getElementById("order")
+                      ?.scrollIntoView({ behavior: "smooth" });
+                  }}
+                  className="relative overflow-hidden flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-red-500 to-pink-600 text-white font-semibold shadow-lg hover:scale-105 transition-transform"
+                >
+                  <span className="relative z-10 flex items-center gap-2">
+                    <ShoppingBag className="w-5 h-5" />
+                    {t("orderDelivery")}
+                  </span>
+                </button>
+              </div>
+            </div>
           </div>
 
-          {/* ✅ Slideshow */}
           <div className="relative w-full h-96 rounded-3xl overflow-hidden shadow-2xl">
             {images.map((src, index) => (
               <img
@@ -80,7 +108,6 @@ const Hero: React.FC = () => {
           </div>
         </div>
 
-        {/* Slider ostidagi tavsif */}
         <div className="mt-10 text-center px-4">
           <p className="text-gray-700 dark:text-gray-300 text-lg max-w-3xl mx-auto">
             {descriptions[currentLanguage]}

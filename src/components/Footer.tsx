@@ -45,14 +45,19 @@ const Footer: React.FC = () => {
             </h4>
             <div className="space-y-2">
               {[
-                { key: "home", href: "#home" },
-                { key: "menu", href: "#menu" },
-                { key: "contact", href: "#contact" },
+                { key: "home", target: "home" },
+                { key: "menu", target: "menu" },
+                { key: "contact", target: "contact" },
+                { key: "order", target: "order" },
               ].map((link) => (
-                <a
+                <button
                   key={link.key}
-                  href={link.href}
-                  className="group flex items-center justify-between text-gray-300 hover:text-amber-400 transition-colors duration-200 text-sm"
+                  onClick={() => {
+                    document
+                      .getElementById(link.target)
+                      ?.scrollIntoView({ behavior: "smooth" });
+                  }}
+                  className="group flex w-full items-center justify-between text-gray-300 hover:text-amber-400 transition-colors duration-200 text-sm"
                 >
                   <span className="transition-transform duration-200 group-hover:translate-x-1">
                     {t(link.key)}
@@ -60,7 +65,7 @@ const Footer: React.FC = () => {
                   <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-200">
                     →
                   </span>
-                </a>
+                </button>
               ))}
             </div>
           </div>

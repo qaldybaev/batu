@@ -1,5 +1,5 @@
 import React from "react";
-import { MapPin, Phone, Mail, Clock, Instagram } from "lucide-react";
+import { MapPin, Phone, Clock, Instagram } from "lucide-react";
 import { AiFillTikTok } from "react-icons/ai";
 import { FaWhatsapp } from "react-icons/fa";
 import { useLanguage } from "../contexts/LanguageContext";
@@ -99,11 +99,11 @@ const Contact: React.FC = () => {
         </a>
       ),
     },
-    {
-      icon: <Mail className="w-6 h-6 text-amber-600" />,
-      title: t("email"),
-      content: "info@batufoodlove.kz",
-    },
+    // {
+    //   icon: <Mail className="w-6 h-6 text-amber-600" />,
+    //   title: t("email"),
+    //   content: "info@batufoodlove.kz",
+    // },
     {
       icon: <Clock className="w-6 h-6 text-amber-600" />,
       title: t("workingHours"),
