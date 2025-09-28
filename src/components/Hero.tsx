@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Heart, Phone, ShoppingBag } from "lucide-react"; // ✅ yangi iconlar qo‘shildi
+import { Heart, Phone, ShoppingBag } from "lucide-react";
 import { useLanguage } from "../contexts/LanguageContext";
 
 const Hero: React.FC = () => {
@@ -19,7 +19,6 @@ const Hero: React.FC = () => {
 
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  // ✅ Slaydlarni avtomatik almashtirish
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % images.length);
@@ -27,7 +26,6 @@ const Hero: React.FC = () => {
     return () => clearInterval(interval);
   }, [images.length]);
 
-  // ✅ Rasmlarni oldindan yuklash (preload)
   useEffect(() => {
     images.forEach((src) => {
       const img = new Image();
@@ -35,13 +33,11 @@ const Hero: React.FC = () => {
     });
   }, [images]);
 
-  // Kafe tavsifi
   const descriptions: { [key: string]: string } = {
     kz: "Batu – бұл тек қана дәмді тағамдар емес, сонымен бірге жақсы эмоциялар мен есте қаларлық сәттердің ошағы. Біз әрбір тағамды сүйіспеншілікпен дайындап, әр келушіні ерекше атмосферамен қарсы аламыз. Бізбен бірге дәмді тағамның, жылулық пен көңілді сәттердің куәсі болыңыз!",
     ru: "Batu – это не просто вкусная еда, а место, где рождаются хорошие эмоции и незабываемые моменты. Мы готовим каждое блюдо с любовью и встречаем каждого гостя в особой атмосфере. Станьте свидетелем настоящего вкуса, тепла и радости вместе с нами!",
     en: "Batu is not just a place for delicious food, but a haven where good emotions and unforgettable moments come alive. Every dish is prepared with love, and every guest is welcomed into a unique and warm atmosphere. Join us and experience the true taste of joy, warmth, and culinary delight!",
   };
-  
 
   return (
     <section
@@ -65,31 +61,33 @@ const Hero: React.FC = () => {
             </h1>
 
             <div className="flex flex-wrap gap-4 mt-6">
-              <div className="flex flex-wrap gap-4 mt-6">
-                {/* 📞 Pozvonit */}
-                <a
-                  href="tel:+7 775 396 7888"
-                  className="relative overflow-hidden flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-amber-500 to-orange-600 text-white font-semibold shadow-lg hover:scale-105 transition-transform"
-                >
-                  <Phone className="w-5 h-5 relative z-10" />
-                  <span className="relative z-10">{t("call")}</span>
-                </a>
+              {/* 📞 Pozvonit */}
+              <a
+                href="tel:+7 775 396 7888"
+                className="relative overflow-hidden flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-amber-500 to-orange-600 text-white font-semibold shadow-lg hover:scale-105 transition-transform"
+              >
+                <Phone className="w-5 h-5 relative z-10" />
+                <span className="relative z-10">{t("call")}</span>
+                {/* Shine effekt */}
+                <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent translate-x-[-100%] animate-shine" />
+              </a>
 
-                {/* 🛍 Zakazat dostavku */}
-                <button
-                  onClick={() => {
-                    document
-                      .getElementById("order")
-                      ?.scrollIntoView({ behavior: "smooth" });
-                  }}
-                  className="relative overflow-hidden flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-red-500 to-pink-600 text-white font-semibold shadow-lg hover:scale-105 transition-transform"
-                >
-                  <span className="relative z-10 flex items-center gap-2">
-                    <ShoppingBag className="w-5 h-5" />
-                    {t("orderDelivery")}
-                  </span>
-                </button>
-              </div>
+              {/* 🛍 Zakazat dostavku */}
+              <button
+                onClick={() => {
+                  document
+                    .getElementById("order")
+                    ?.scrollIntoView({ behavior: "smooth" });
+                }}
+                className="relative overflow-hidden flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-red-500 to-pink-600 text-white font-semibold shadow-lg hover:scale-105 transition-transform"
+              >
+                <span className="relative z-10 flex items-center gap-2">
+                  <ShoppingBag className="w-5 h-5" />
+                  {t("orderDelivery")}
+                </span>
+                {/* Shine effekt */}
+                <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent translate-x-[-100%] animate-shine" />
+              </button>
             </div>
           </div>
 
