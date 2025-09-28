@@ -54,11 +54,13 @@ const Hero: React.FC = () => {
               </span>
             </div>
 
-            <h1 className="text-5xl lg:text-7xl font-bold text-gray-900 dark:text-gray-100 leading-tight">
-              <span className="bg-gradient-to-r from-amber-600 to-orange-600 bg-clip-text text-transparent">
-                {t("heroTitle")}
-              </span>
-            </h1>
+            {/* <h1 className="text-5xl lg:text-7xl font-bold text-gray-900 dark:text-gray-100 leading-tight">
+  <img 
+    src="/batu logo1.png" // 👉 public papkaga logoni joylashtirasiz
+    alt="BatuFoodLove Logo" 
+    className="h-20 lg:h-28 w-auto mx-auto lg:mx-0 object-contain" 
+  />
+</h1> */}
 
             <div className="flex flex-wrap gap-4 mt-6">
               {/* 📞 Pozvonit */}

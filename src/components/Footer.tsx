@@ -1,5 +1,5 @@
 import React from "react";
-import { Heart, Instagram } from "lucide-react";
+import {  Instagram } from "lucide-react";
 import { useLanguage } from "../contexts/LanguageContext";
 import { FaWhatsapp } from "react-icons/fa";
 import { AiFillTikTok } from "react-icons/ai";
@@ -20,11 +20,13 @@ const Footer: React.FC = () => {
           {/* Brand */}
           <div className="space-y-4 bg-white/5 rounded-2xl p-6 border border-white/10 backdrop-blur-sm hover:border-amber-400/30 transition-colors duration-300">
             <div className="flex items-center space-x-2">
-              <h3 className="text-2xl font-bold bg-gradient-to-r from-amber-400 to-orange-400 bg-clip-text text-transparent">
-                BatuFoodLove
-              </h3>
-              <Heart className="w-6 h-6 text-red-500 fill-current" />
+              <img
+                src="/batu logo1.png" 
+                alt="BatuFoodLove Logo"
+                className="h-10 w-auto object-contain"
+              />
             </div>
+
             <p className="text-gray-400 text-sm leading-relaxed">
               {currentLanguage === "kz"
                 ? "Дәмді тағамдар мен жақсы сезімдер - біздің негізгі ұранымыз"

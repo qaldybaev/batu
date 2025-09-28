@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
-import { Globe, Moon, Sun } from 'lucide-react';
-import { useLanguage, Language } from '../contexts/LanguageContext';
-import { useTheme } from '../contexts/ThemeContext';
+import React, { useState } from "react";
+import { Globe, Moon, Sun } from "lucide-react";
+import { useLanguage, Language } from "../contexts/LanguageContext";
+import { useTheme } from "../contexts/ThemeContext";
 
 const Header: React.FC = () => {
   const [isLanguageOpen, setIsLanguageOpen] = useState(false);
@@ -9,15 +9,15 @@ const Header: React.FC = () => {
   const { isDark, toggleTheme } = useTheme(); // <-- Context orqali olamiz
 
   const languages = [
-    { code: 'kz' as Language, name: 'ҚАЗ', flag: '🇰🇿' },
-    { code: 'ru' as Language, name: 'РУС', flag: '🇷🇺' },
-    { code: 'en' as Language, name: 'ENG', flag: '🇬🇧' },
+    { code: "kz" as Language, name: "ҚАЗ", flag: "🇰🇿" },
+    { code: "ru" as Language, name: "РУС", flag: "🇷🇺" },
+    { code: "en" as Language, name: "ENG", flag: "🇬🇧" },
   ];
 
   const navItems = [
-    { key: 'home', href: '#home' },
-    { key: 'menu', href: '#menu' },
-    { key: 'contact', href: '#contact' },
+    { key: "home", href: "#home" },
+    { key: "menu", href: "#menu" },
+    { key: "contact", href: "#contact" },
   ];
 
   return (
@@ -25,10 +25,15 @@ const Header: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
+          {/* Logo */}
           <div className="flex-shrink-0">
-            <h1 className="text-2xl font-bold bg-gradient-to-r from-amber-600 to-orange-600 bg-clip-text text-transparent">
-              BatuFoodLove
-            </h1>
+            <a href="#home">
+              <img
+                src="/batu logo1.png" // 👉 logo faylingizni public papkaga joylashtiring
+                alt="BatuFoodLove Logo"
+                className="h-10 w-auto object-contain"
+              />
+            </a>
           </div>
 
           {/* Desktop Navigation */}
@@ -53,7 +58,12 @@ const Header: React.FC = () => {
                 className="flex items-center space-x-2 px-3 py-2 text-sm font-medium text-gray-700 hover:text-amber-600 transition-colors duration-200"
               >
                 <Globe size={16} />
-                <span>{languages.find(lang => lang.code === currentLanguage)?.name}</span>
+                <span>
+                  {
+                    languages.find((lang) => lang.code === currentLanguage)
+                      ?.name
+                  }
+                </span>
               </button>
 
               {isLanguageOpen && (
@@ -66,7 +76,9 @@ const Header: React.FC = () => {
                         setIsLanguageOpen(false);
                       }}
                       className={`w-full px-4 py-2 text-left text-sm hover:bg-amber-50 transition-colors duration-200 flex items-center space-x-2 ${
-                        currentLanguage === lang.code ? 'bg-amber-50 text-amber-600' : 'text-gray-700'
+                        currentLanguage === lang.code
+                          ? "bg-amber-50 text-amber-600"
+                          : "text-gray-700"
                       }`}
                     >
                       <span>{lang.flag}</span>
@@ -84,7 +96,9 @@ const Header: React.FC = () => {
               className="flex items-center gap-2 px-3 py-2 text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-amber-600 dark:hover:text-amber-400 transition-colors duration-200"
             >
               {isDark ? <Sun size={16} /> : <Moon size={16} />}
-              <span className="hidden sm:inline">{isDark ? 'Light' : 'Dark'}</span>
+              <span className="hidden sm:inline">
+                {isDark ? "Light" : "Dark"}
+              </span>
             </button>
           </div>
         </div>
