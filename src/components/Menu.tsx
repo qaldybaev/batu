@@ -46,13 +46,13 @@ const Menu: React.FC = () => {
 
   return (
     <div
-      className={`p-6 max-w-6xl mx-auto min-h-screen transition-colors ${
+      className={`p-6  mx-auto min-h-screen transition-colors ${
         isDark ? "bg-gray-900 text-white" : "bg-white text-gray-900"
       }`}
     >
       <h1 className="text-2xl font-bold mb-6 text-center flex items-center justify-center gap-2">
         <MdOutlineMenuBook size={28} />
-        <span>{t("menu")}</span> {/* <- endi tilga qarab o'zgaradi */}
+        <span>{t("menu")}</span> 
       </h1>
 
       <div id="menu" className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">

@@ -1,5 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { Heart, Phone, ShoppingBag } from "lucide-react";
+import {
+  Heart,
+  Phone,
+  ShoppingBag,
+  Users,
+  Utensils,
+  Clock,
+  MapPin,
+} from "lucide-react";
 import { useLanguage } from "../contexts/LanguageContext";
 
 const Hero: React.FC = () => {
@@ -39,10 +47,54 @@ const Hero: React.FC = () => {
     en: "Batu is not just a place for delicious food, but a haven where good emotions and unforgettable moments come alive. Every dish is prepared with love, and every guest is welcomed into a unique and warm atmosphere. Join us and experience the true taste of joy, warmth, and culinary delight!",
   };
 
+
+  const stats = [
+    {
+      icon: <Users size={28} className="text-amber-600" />,
+      title: "5000+",
+      desc:
+        currentLanguage === "kz"
+          ? "Маман тұтынушы"
+          : currentLanguage === "ru"
+          ? "Довольных клиентов"
+          : "Happy customers",
+    },
+    {
+      icon: <Utensils size={28} className="text-amber-600" />,
+      title: "100+",
+      desc:
+        currentLanguage === "kz"
+          ? "Тағам түрлері"
+          : currentLanguage === "ru"
+          ? "Видов блюд"
+          : "Menu items",
+    },
+    {
+      icon: <Clock size={28} className="text-amber-600" />,
+      title: "10+",
+      desc:
+        currentLanguage === "kz"
+          ? "Жыл тәжірибе"
+          : currentLanguage === "ru"
+          ? "Лет опыта"
+          : "Years of experience",
+    },
+    {
+      icon: <MapPin size={28} className="text-amber-600" />,
+      title: "3",
+      desc:
+        currentLanguage === "kz"
+          ? "Филиал"
+          : currentLanguage === "ru"
+          ? "Филиала"
+          : "Branches",
+    },
+  ];
+
   return (
     <section
       id="home"
-      className="pt-16 min-h-screen bg-gradient-to-br from-amber-50 via-orange-50 to-red-50 dark:from-gray-900 dark:via-gray-900 dark:to-black flex flex-col items-center transition-colors"
+      className="pt-10 min-h-screen bg-gradient-to-br from-amber-50 via-orange-50 to-red-50 dark:from-gray-900 dark:via-gray-900 dark:to-black flex flex-col items-center transition-colors"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 w-full">
         <div className="grid lg:grid-cols-2 gap-12 items-center w-full">
@@ -54,27 +106,37 @@ const Hero: React.FC = () => {
               </span>
             </div>
 
-            {/* <h1 className="text-5xl lg:text-7xl font-bold text-gray-900 dark:text-gray-100 leading-tight">
-  <img 
-    src="/batu logo1.png" // 👉 public papkaga logoni joylashtirasiz
-    alt="BatuFoodLove Logo" 
-    className="h-20 lg:h-28 w-auto mx-auto lg:mx-0 object-contain" 
-  />
-</h1> */}
+            {/* Highlight text */}
+            {/* <p className="text-xl font-semibold text-gray-800 dark:text-gray-200">
+              {highlightText[currentLanguage]}
+            </p> */}
+            <div className="mt-14 grid grid-cols-4 gap-6 text-center">
+              {stats.map((item, index) => (
+                <div key={index} className="flex flex-col items-center">
+                  <div className="w-12 h-12 flex items-center justify-center bg-amber-100 rounded-full mb-3 shadow-md">
+                    {item.icon}
+                  </div>
+                  <h3 className="text-lg font-bold text-gray-800 dark:text-gray-200">
+                    {item.title}
+                  </h3>
+                  <p className="text-xs text-gray-600 dark:text-gray-400">
+                    {item.desc}
+                  </p>
+                </div>
+              ))}
+            </div>
 
+            {/* Buttons */}
             <div className="flex flex-wrap gap-4 mt-6">
-              {/* 📞 Pozvonit */}
               <a
                 href="tel:+7 775 396 7888"
                 className="relative overflow-hidden flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-amber-500 to-orange-600 text-white font-semibold shadow-lg hover:scale-105 transition-transform"
               >
                 <Phone className="w-5 h-5 relative z-10" />
                 <span className="relative z-10">{t("call")}</span>
-                {/* Shine effekt */}
                 <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent translate-x-[-100%] animate-shine" />
               </a>
 
-              {/* 🛍 Zakazat dostavku */}
               <button
                 onClick={() => {
                   document
@@ -87,12 +149,12 @@ const Hero: React.FC = () => {
                   <ShoppingBag className="w-5 h-5" />
                   {t("orderDelivery")}
                 </span>
-                {/* Shine effekt */}
                 <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent translate-x-[-100%] animate-shine" />
               </button>
             </div>
           </div>
 
+          {/* Slideshow */}
           <div className="relative w-full h-96 rounded-3xl overflow-hidden shadow-2xl">
             {images.map((src, index) => (
               <img
@@ -108,11 +170,14 @@ const Hero: React.FC = () => {
           </div>
         </div>
 
+        {/* Description */}
         <div className="mt-10 text-center px-4">
           <p className="text-gray-700 dark:text-gray-300 text-lg max-w-3xl mx-auto">
             {descriptions[currentLanguage]}
           </p>
         </div>
+
+        {/* Stats section */}
       </div>
     </section>
   );

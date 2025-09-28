@@ -1,6 +1,6 @@
 import React from "react";
 import { ShoppingCart, Truck, Clock } from "lucide-react";
-import { FaWhatsapp } from "react-icons/fa"; // ✅ WhatsApp iconi
+import { FaWhatsapp } from "react-icons/fa";
 import { useLanguage } from "../contexts/LanguageContext";
 
 const OnlineOrder: React.FC = () => {
@@ -18,7 +18,6 @@ const OnlineOrder: React.FC = () => {
       color: "from-green-500 to-green-600",
       logo: "/whatsapp.png",
       deliveryTime: "30-40 мин",
-
       link: "https://wa.me/77753967888?text=Здравствуйте,%20можно%20сделать%20заказ?",
     },
     {
@@ -107,24 +106,30 @@ const OnlineOrder: React.FC = () => {
                   </div>
                 </div>
 
-                <div className="flex items-center space-x-6 mb-6 text-sm text-gray-500 dark:text-gray-400">
+                {/* Delivery Info */}
+                <div className="flex items-center gap-4 mb-6 text-sm text-gray-500 dark:text-gray-400">
+                  {/* Vaqt */}
                   <div className="flex items-center space-x-2">
                     <Clock className="w-4 h-4" />
-                    <span>{method.deliveryTime}</span>
+                    <span className="w-20">{method.deliveryTime}</span>
                   </div>
-                  <div className="flex items-center space-x-2">
-                    <Truck className="w-4 h-4" />
-                    <span>
-                      {currentLanguage === "kz"
-                        ? "Тегін жеткізу"
-                        : currentLanguage === "ru"
-                        ? "Бесплатная доставка"
-                        : "Free delivery"}
-                    </span>
-                  </div>
+
+                  {/* WhatsApp uchun faqat 10 000₸ dan oshsa */}
+                  {method.name === "WhatsApp" && (
+                    <div className="flex items-center space-x-2">
+                      <Truck className="w-4 h-4" />
+                      <span className="font-bold text-amber-600">
+                        {currentLanguage === "kz"
+                          ? "10 000₸-ден асса тегін жеткізу"
+                          : currentLanguage === "ru"
+                          ? "Бесплатная доставка от 10 000₸"
+                          : "Free delivery from 10 000₸"}
+                      </span>
+                    </div>
+                  )}
                 </div>
 
-                {/* Tugma */}
+                {/* Button */}
                 <a
                   href={method.link}
                   target="_blank"
